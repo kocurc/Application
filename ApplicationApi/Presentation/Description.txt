@@ -1,0 +1,1 @@
+Zawiera kontrolery Web API, które przyjmuj¹ ¿¹dania HTTP i przekazuj¹ je do Application u¿ywaj¹c jej Use Case'ów
