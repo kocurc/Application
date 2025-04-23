@@ -25,6 +25,9 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
+    - name: Build API solution
+      run: dotnet build Application.sln --configuration Release
+
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v3
       with:
