@@ -11,5 +11,5 @@ RUN dotnet publish --configuration Release --output ./publish
 
 # RUNTIME STAGE, It creates new file system that weighs less than previous stage
 FROM nginx:alpine@sha256:65645c7bb6a0661892a8b03b89d0743208a18dd2f3f17a54ef4b76fb8e2f2a10 as final
-COPY --from=build /publish/wwwwroot /usr/share/nginx/html
+COPY --from=build ./publish/wwwwroot /usr/share/nginx/html
 EXPOSE 80
