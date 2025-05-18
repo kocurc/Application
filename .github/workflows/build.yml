@@ -1,0 +1,34 @@
+name: Build application
+
+on:
+    workflow_dispatch:
+    push:
+        branches: [main]
+    pull_request:
+        branches: [main]
+
+jobs:
+    build-application:
+        name: Build appplication
+        runs-on: ubuntu-latest
+
+        steps:
+        - name: Checkout repository
+          uses: actions/checkout@v4
+
+        - name: Setup .NET
+          uses: actions/setup-dotnet@v4
+          with:
+            dotnet-version: '9.0'
+
+        - name: Print repository data
+          run: ./build.sh PrintVersionData
+
+        - name: Restore .NET tools
+          run: ./build.sh RestoreDotNetTools
+
+        - name: Print version data
+          run: ./build.sh PrintVersionData
+
+        - name: Build application
+          run: ./build.sh Compile
