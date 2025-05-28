@@ -2,6 +2,7 @@
 using ApplicationApi.Domain.Exceptions;
 using FluentAssertions;
 
+// Validate platform compatibility
 #pragma warning disable CA1416
 
 namespace ApplicationTests.UnitTests.Domain.Entities

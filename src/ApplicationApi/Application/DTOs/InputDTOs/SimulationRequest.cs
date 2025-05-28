@@ -1,22 +1,30 @@
 ﻿namespace ApplicationApi.Application.DTOs.InputDTOs
 {
-    /*
-	 * To pełen zestaw danych wejściowych wymaganych do uruchomienia use case’a
-	 */
-    public class SimulationRequest
+    public class SimulationRequest(
+	    int year,
+	    int years,
+	    int initialPopulation,
+	    double amplitude,
+	    int capacity,
+	    int migration,
+	    int seasonality,
+	    double disasterChance,
+	    int disasterMinLoss,
+	    int disasterMaxLoss,
+	    double baseGrowthRate)
     {
-        /// <summary>
+	    /// <summary>
         /// A simulation start year.
         /// </summary>
         /// <value>
         /// 0 means a first year of a simulation.
         /// </value>
-        public int Year { get; set; }
+        public int Year { get; init; } = year;
 
         /// <summary>
         /// A number of simulation years.
         /// </summary>
-        public int Years { get; set; }
+        public int Years { get; init; } = years;
 
         /// <summary>
         /// An initial population.
@@ -27,7 +35,7 @@
         /// <value>
         /// Value must be greater than 0.
         /// </value>
-        public int Population { get; set; }
+        public int InitialPopulation { get; init; } = initialPopulation;
 
         /// <summary>
         /// A seasonal amplitude.
@@ -38,7 +46,7 @@
         /// <value>
         /// It takes values from a range: 0.00 - 1.00.
         /// </value>
-        public double Amplitude { get; set; }
+        public double Amplitude { get; init; } = amplitude;
 
         /// <summary>
         /// Environment capacity.
@@ -49,7 +57,7 @@
         /// <value>
         /// Value should greater than initial population.
         /// </value>
-        public int Capacity { get; set; }
+        public int Capacity { get; init; } = capacity;
 
         /// <summary>
         /// A migration per year.
@@ -57,10 +65,10 @@
         /// <value>
         ///	A maximum migration should less or equal to 100 000.
         /// <para>
-        /// A minimum migration should greater or equal to a negative value of the Population Growth result.
+        /// A minimum migration should greater or equal to a negative value of the InitialPopulation Growth result.
         /// </para>
         /// </value>
-        public int Migration { get; set; }
+        public int Migration { get; init; } = migration;
 
         /// <summary>
         /// A season length.
@@ -71,7 +79,7 @@
         /// 1 means an annual seasonality
         /// </para>
         /// </value>
-        public int Seasonality { get; set; }
+        public int Seasonality { get; init; } = seasonality;
 
         /// <summary>
         /// A disaster percentage chance.
@@ -82,7 +90,7 @@
         /// <value>
         /// It takes values from a range: 0.00 - 1.00.
         /// </value>
-        public double DisasterChange { get; set; }
+        public double DisasterChance { get; init; } = disasterChance;
 
         /// <summary>
         ///	A minimal number of disaster casualties.
@@ -90,16 +98,16 @@
         /// <value>
         ///	A minimal value should greater or equal to 0 and less than a maximum value.
         /// </value>
-        public int DisasterMinLoss { get; set; }
+        public int DisasterMinLoss { get; init; } = disasterMinLoss;
 
         /// <summary>
         /// A maximum number of catastrophe casualties.
         /// </summary>
         /// <value>
         ///	A maximum value should be greater or equal to a minimum value and less than or equal to
-        /// Population Growth result after Migration.
+        /// InitialPopulation Growth result after Migration.
         /// </value>
-        public int DisasterMaxLoss { get; set; }
+        public int DisasterMaxLoss { get; init; } = disasterMaxLoss;
 
         /// <summary>
         /// A base growth rate.
@@ -107,6 +115,6 @@
         /// <value>
         /// It takes values from a range: 0.00 - 1.00.
         /// </value>
-        public double BaseGrowthRate { get; set; }
+        public double BaseGrowthRate { get; init; } = baseGrowthRate;
     }
 }

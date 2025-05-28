@@ -1,3 +1,6 @@
+using ApplicationApi.Application.Validation;
+using FluentValidation;
+
 namespace ApplicationApi
 {
     public class Program
@@ -11,6 +14,9 @@ namespace ApplicationApi
 
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             _ = builder.Services.AddOpenApi();
+
+            // Add FluentValidation validators
+            builder.Services.AddValidatorsFromAssemblyContaining<SimulationRequestValidator>();
 
             WebApplication app = builder.Build();
 

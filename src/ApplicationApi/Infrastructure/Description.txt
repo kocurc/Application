@@ -1,1 +1,0 @@
-﻿Zawiera dostęp do bazy danych

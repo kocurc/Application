@@ -3,18 +3,15 @@ using ApplicationApi.Domain.Exceptions;
 
 namespace ApplicationApi.Domain.Entities
 {
-    /*
-	 * Reprezentują rzeczy w systemie, które mają unikalną tożsamość (np. użytkownik, zamówienie, rekord populacji)
-	 */
     public class PopulationRecord
     {
 
-        public int Id { get; private set; }
+        public Guid Id { get; private set; }
         public int Year { get; private set; }
         public int Population { get; private set; }
-        public DateTime CreatedAt { get; private set; } = DateTime.UtcNow;
+        public DateTime CreatedAt { get; private set; }
 
-        public PopulationRecord(int year, int population)
+		public PopulationRecord(int year, int population)
         {
             if (year < 0)
             {
@@ -23,11 +20,13 @@ namespace ApplicationApi.Domain.Entities
 
             if (population < 0)
             {
-                throw new InvalidPopulationException("Population cannot be less than zero.");
+                throw new InvalidPopulationException("InitialPopulation cannot be less than zero.");
             }
 
+            Id = Guid.NewGuid();
             Year = year;
             Population = population;
+            CreatedAt = DateTime.UtcNow;
         }
 
         [ExcludeFromCodeCoverage]
