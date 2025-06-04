@@ -1,4 +1,5 @@
-﻿using ApplicationApi.Domain.Entities;
+﻿using ApplicationApi.Application.Enums;
+using ApplicationApi.Domain.Entities;
 
 namespace ApplicationApi.Application.ServicesInterfaces
 {
@@ -11,7 +12,7 @@ namespace ApplicationApi.Application.ServicesInterfaces
 			double baseGrowthRate,
 			int environmentCapacity,
 			int migrationPerYear,
-			int seasonalLength,
+			Seasonality seasonalLength,
 			double disasterChance,
 			int disasterMinLoss,
 			int disasterMaxLoss

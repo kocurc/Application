@@ -6,4 +6,7 @@ max_line_length = 120
 
 # IDE (Roslyn Analyzer) rules
 # Use explicit type instead of var
-dotnet_diagnostic.IDE0008.severity = none 
+dotnet_diagnostic.IDE0008.severity = none
+
+# Fix formatting
+dotnet_diagnostic.IDE0055.severity = none

@@ -39,7 +39,7 @@ namespace ApplicationApi.Application.UseCases
 				var populationRecord = populationSimulationService.CalculateNextYear(
 					year: simulationYear,
 					population: currentPopulation,
-					seasonalAmplitude: simulationRequest.Seasonality,
+					seasonalAmplitude: simulationRequest.Amplitude,
 					baseGrowthRate: simulationRequest.BaseGrowthRate,
 					environmentCapacity: simulationRequest.Capacity,
 					migrationPerYear: simulationRequest.Migration,

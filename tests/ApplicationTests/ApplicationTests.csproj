@@ -8,6 +8,14 @@
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <WarningLevel>9999</WarningLevel>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <WarningLevel>9999</WarningLevel>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="coverlet.collector" Version="6.0.4">
       <PrivateAssets>all</PrivateAssets>
@@ -30,6 +38,10 @@
 
   <ItemGroup>
     <Using Include="NUnit.Framework" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="UnitTests\Application\Validation\SimulationRequestValidatorTests\" />
   </ItemGroup>
 
 </Project>

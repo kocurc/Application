@@ -1,4 +1,6 @@
-﻿namespace ApplicationApi.Application.DTOs.InputDTOs
+﻿using ApplicationApi.Application.Enums;
+
+namespace ApplicationApi.Application.DTOs.InputDTOs
 {
     public class SimulationRequest(
 	    int year,
@@ -7,7 +9,7 @@
 	    double amplitude,
 	    int capacity,
 	    int migration,
-	    int seasonality,
+	    Seasonality seasonality,
 	    double disasterChance,
 	    int disasterMinLoss,
 	    int disasterMaxLoss,
@@ -79,7 +81,7 @@
         /// 1 means an annual seasonality
         /// </para>
         /// </value>
-        public int Seasonality { get; init; } = seasonality;
+        public Seasonality Seasonality { get; init; } = seasonality;
 
         /// <summary>
         /// A disaster percentage chance.
