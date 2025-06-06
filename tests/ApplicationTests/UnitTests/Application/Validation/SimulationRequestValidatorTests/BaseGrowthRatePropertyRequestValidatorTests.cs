@@ -6,7 +6,7 @@ using FluentValidation.TestHelper;
 // Validate platform compatibility
 #pragma warning disable CA1416
 
-namespace ApplicationTests.UnitTests.Application.Validation;
+namespace ApplicationTests.UnitTests.Application.Validation.SimulationRequestValidatorTests;
 
 public class BaseGrowthRatePropertyRequestValidatorTests
 {

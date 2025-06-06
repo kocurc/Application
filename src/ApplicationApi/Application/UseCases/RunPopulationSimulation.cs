@@ -15,10 +15,7 @@ namespace ApplicationApi.Application.UseCases
 			CancellationToken cancellationToken = default)
 
 		{
-			if (simulationRequest == null)
-			{
-				throw new ArgumentNullException(nameof(simulationRequest));
-			}
+			ArgumentNullException.ThrowIfNull(simulationRequest);
 
 			var simulationRequestValidationResult =
 				simulationRequestValidator.ValidateAsync(simulationRequest, cancellationToken);
@@ -32,13 +29,13 @@ namespace ApplicationApi.Application.UseCases
 			var currentPopulation = simulationRequest.InitialPopulation;
 			var simulationYears = simulationRequest.Years;
 
-			for (int simulationYear = 0; simulationYear < simulationYears; simulationYear++)
+			for (var simulationYear = 0; simulationYear < simulationYears; simulationYear++)
 			{
 				cancellationToken.ThrowIfCancellationRequested();
 
 				var populationRecord = populationSimulationService.CalculateNextYear(
 					year: simulationYear,
-					population: currentPopulation,
+					initialPopulation: currentPopulation,
 					seasonalAmplitude: simulationRequest.Amplitude,
 					baseGrowthRate: simulationRequest.BaseGrowthRate,
 					environmentCapacity: simulationRequest.Capacity,

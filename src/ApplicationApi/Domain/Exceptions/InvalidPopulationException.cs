@@ -1,20 +1,15 @@
-﻿namespace ApplicationApi.Domain.Exceptions
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace ApplicationApi.Domain.Exceptions
 {
-    /*
-	 * Służą do zgłaszania błędów specyficznych dla logiki biznesowej
-	 */
+    [ExcludeFromCodeCoverage]
     public class InvalidPopulationException : Exception
     {
-        public InvalidPopulationException()
-        {
-        }
+        public InvalidPopulationException() { }
 
-        public InvalidPopulationException(string? message) : base(message)
-        {
-        }
+        public InvalidPopulationException(string? message) : base(message) { }
 
         public InvalidPopulationException(string? message, Exception? innerException) : base(message, innerException)
-        {
-        }
+        { }
     }
 }

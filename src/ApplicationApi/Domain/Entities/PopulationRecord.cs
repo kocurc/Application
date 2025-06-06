@@ -29,11 +29,8 @@ namespace ApplicationApi.Domain.Entities
             CreatedAt = DateTime.UtcNow;
         }
 
-        [ExcludeFromCodeCoverage]
-        // Dla Entity Framework Core
-
-        protected PopulationRecord()
-        { }
+        [ExcludeFromCodeCoverage] // Dla Entity Framework Core
+		protected PopulationRecord() { }
 
         public void UpdatePopulation(int newPopulation)
         {

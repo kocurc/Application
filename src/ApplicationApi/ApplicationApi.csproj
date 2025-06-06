@@ -26,6 +26,7 @@
   <ItemGroup>
     <Folder Include="Domain\ValueObjects\" />
     <Folder Include="Infrastructure\Database\" />
+    <Folder Include="Infrastructure\Persistence\" />
     <Folder Include="Infrastructure\Repositories\" />
     <Folder Include="Presentation\Controllers\" />
   </ItemGroup>

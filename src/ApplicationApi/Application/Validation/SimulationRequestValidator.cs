@@ -69,6 +69,5 @@ namespace ApplicationApi.Application.Validation
 				.When(x => x.Amplitude > 0)
 				.WithMessage("When Amplitude is greater than zero, then Seasonality must be Monthly.");
 		}
-
 	}
 }

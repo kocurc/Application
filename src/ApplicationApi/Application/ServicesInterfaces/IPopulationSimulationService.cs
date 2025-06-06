@@ -7,7 +7,7 @@ namespace ApplicationApi.Application.ServicesInterfaces
 	{
 		PopulationRecord CalculateNextYear(
 			int year,
-			int population,
+			int initialPopulation,
 			double seasonalAmplitude,
 			double baseGrowthRate,
 			int environmentCapacity,
