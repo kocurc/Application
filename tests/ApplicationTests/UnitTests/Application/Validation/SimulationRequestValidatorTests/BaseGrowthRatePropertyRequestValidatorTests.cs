@@ -1,6 +1,6 @@
 ﻿using ApplicationApi.Application.DTOs.InputDTOs;
-using ApplicationApi.Application.Enums;
 using ApplicationApi.Application.Validation;
+using ApplicationApi.Domain.Enums;
 using FluentValidation.TestHelper;
 
 // Validate platform compatibility

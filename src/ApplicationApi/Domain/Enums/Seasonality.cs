@@ -1,4 +1,4 @@
-﻿namespace ApplicationApi.Application.Enums
+﻿namespace ApplicationApi.Domain.Enums
 {
 	/// <summary>
 	/// Represents time-based seasonality used in calculations.

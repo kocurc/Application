@@ -1,5 +1,5 @@
 ﻿using ApplicationApi.Application.DTOs.InputDTOs;
-using ApplicationApi.Application.Enums;
+using ApplicationApi.Domain.Enums;
 using FluentValidation;
 
 namespace ApplicationApi.Application.Validation

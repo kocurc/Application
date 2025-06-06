@@ -1,4 +1,4 @@
-﻿using ApplicationApi.Application.Enums;
+﻿using ApplicationApi.Domain.Enums;
 
 namespace ApplicationApi.Application.DTOs.InputDTOs
 {
