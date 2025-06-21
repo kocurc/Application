@@ -1,12 +1,7 @@
-﻿using ApplicationApi.Application.DTOs.InputDTOs;
-using ApplicationApi.Application.Interfaces;
-using ApplicationApi.Application.ServicesInterfaces;
-using ApplicationApi.Application.UseCases;
-using FluentAssertions;
-using FluentValidation;
-using NSubstitute;
+﻿
 
 // Validate platform compatibility
+
 #pragma warning disable CA1416
 
 namespace ApplicationTests.UnitTests.Application.UseCases

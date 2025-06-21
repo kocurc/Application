@@ -1,8 +1,4 @@
-﻿using ApplicationApi.Application.DTOs.InputDTOs;
-using ApplicationApi.Domain.Enums;
-using FluentValidation;
-
-namespace ApplicationApi.Application.Validation
+﻿namespace ApplicationApi.Application.Validation
 {
 	public class SimulationRequestValidator : AbstractValidator<SimulationRequest>
 	{

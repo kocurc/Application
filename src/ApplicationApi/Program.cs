@@ -1,10 +1,3 @@
-using ApplicationApi.Application.ServicesInterfaces;
-using ApplicationApi.Application.UseCases;
-using ApplicationApi.Application.Validation;
-using ApplicationApi.Domain.Services;
-using ApplicationApi.Domain.Strategies;
-using FluentValidation;
-
 namespace ApplicationApi
 {
     public class Program

@@ -1,16 +1,3 @@
-using System.Diagnostics.CodeAnalysis;
-using Nuke.Common;
-using Nuke.Common.CI.GitHubActions;
-using Nuke.Common.Execution;
-using Nuke.Common.Git;
-using Nuke.Common.IO;
-using Nuke.Common.ProjectModel;
-using Nuke.Common.Tools.DotNet;
-using Nuke.Common.Tools.GitVersion;
-using Nuke.Common.Utilities.Collections;
-using Serilog;
-using static Nuke.Common.Tools.DotNet.DotNetTasks;
-
 [SuppressMessage("ReSharper", "AllUnderscoreLocalParameterName")]
 internal class Build : NukeBuild
 {

@@ -1,6 +1,4 @@
-﻿using ApplicationApi.Domain.Enums;
-
-namespace ApplicationApi.Application.DTOs.InputDTOs
+﻿namespace ApplicationApi.Application.DTOs.InputDTOs
 {
     public class SimulationRequest(
 	    int year,

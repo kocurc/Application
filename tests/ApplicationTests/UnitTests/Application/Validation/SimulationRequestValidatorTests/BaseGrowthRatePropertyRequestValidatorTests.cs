@@ -1,7 +1,4 @@
-﻿using ApplicationApi.Application.DTOs.InputDTOs;
-using ApplicationApi.Application.Validation;
-using ApplicationApi.Domain.Enums;
-using FluentValidation.TestHelper;
+﻿
 
 // Validate platform compatibility
 #pragma warning disable CA1416

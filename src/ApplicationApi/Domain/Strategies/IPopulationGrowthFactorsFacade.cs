@@ -1,6 +1,4 @@
-﻿using ApplicationApi.Domain.Enums;
-
-namespace ApplicationApi.Domain.Strategies
+﻿namespace ApplicationApi.Domain.Strategies
 {
 	public interface IPopulationGrowthFactorsFacade
 	{

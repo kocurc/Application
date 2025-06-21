@@ -1,7 +1,4 @@
-﻿using ApplicationApi.Domain.Entities;
-using ApplicationApi.Domain.Enums;
-
-namespace ApplicationApi.Application.ServicesInterfaces
+﻿namespace ApplicationApi.Application.ServicesInterfaces
 {
 	public interface IPopulationSimulationService
 	{

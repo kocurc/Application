@@ -1,78 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>net8.0</TargetFramework>
-    <RootNamespace></RootNamespace>
-    <NoWarn>CS0649;CS0169;CA1050;CA1822;CA2211;IDE1006</NoWarn>
-    <NukeRootDirectory>..</NukeRootDirectory>
-    <NukeScriptDirectory>..</NukeScriptDirectory>
-    <NukeTelemetryVersion>1</NukeTelemetryVersion>
-    <IsPackable>false</IsPackable>
-  </PropertyGroup>
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<RootNamespace></RootNamespace>
+		<NukeRootDirectory>..</NukeRootDirectory>
+		<NukeScriptDirectory>..</NukeScriptDirectory>
+		<NukeTelemetryVersion>1</NukeTelemetryVersion>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Nuke.Common" Version="9.0.4" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="..\.nuke\temp\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="..\.nuke\temp\build.log" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="..\.nuke\temp\build.2025-05-15_00-13-07.log" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="..\.nuke\temp\build.2025-05-15_00-12-55.log" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="..\.nuke\temp\build.2025-05-15_00-03-10.log" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="..\.nuke\temp\build.2025-05-15_00-00-48.log" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="..\.nuke\temp\build.2025-05-14_23-56-49.log" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="..\.nuke\temp\build.2025-05-14_23-56-34.log" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="..\.nuke\temp\build.log" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="..\.nuke\temp\build.2025-05-14_23-56-34.log" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="..\.nuke\temp\build.2025-05-14_23-56-49.log" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="..\.nuke\temp\build.2025-05-15_00-00-48.log" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="..\.nuke\temp\build.2025-05-15_00-03-10.log" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="..\.nuke\temp\build.2025-05-15_00-12-55.log" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove="..\.nuke\temp\build.2025-05-15_00-13-07.log" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Nuke.Common" Version="9.0.4" />
+	</ItemGroup>
 
 </Project>

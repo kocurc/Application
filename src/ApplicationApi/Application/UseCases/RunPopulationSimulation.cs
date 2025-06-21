@@ -1,10 +1,4 @@
-﻿using ApplicationApi.Application.DTOs.InputDTOs;
-using ApplicationApi.Application.Interfaces;
-using ApplicationApi.Application.ServicesInterfaces;
-using ApplicationApi.Domain.Entities;
-using FluentValidation;
-
-namespace ApplicationApi.Application.UseCases
+﻿namespace ApplicationApi.Application.UseCases
 {
 	public class RunPopulationSimulation(
 		IPopulationRepository populationRepository,

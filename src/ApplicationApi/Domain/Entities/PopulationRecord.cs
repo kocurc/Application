@@ -1,7 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using ApplicationApi.Domain.Exceptions;
-
-namespace ApplicationApi.Domain.Entities
+﻿namespace ApplicationApi.Domain.Entities
 {
     public class PopulationRecord
     {

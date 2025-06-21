@@ -1,9 +1,4 @@
-﻿using ApplicationApi.Application.ServicesInterfaces;
-using ApplicationApi.Domain.Entities;
-using ApplicationApi.Domain.Enums;
-using ApplicationApi.Domain.Strategies;
-
-namespace ApplicationApi.Domain.Services
+﻿namespace ApplicationApi.Domain.Services
 {
     public class PopulationSimulationService(IPopulationGrowthFactorsFacade populationGrowthFactorsFacade)
 	    : IPopulationSimulationService

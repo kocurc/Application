@@ -1,6 +1,4 @@
-﻿using ApplicationApi.Domain.Enums;
-
-namespace ApplicationApi.Domain.Strategies
+﻿namespace ApplicationApi.Domain.Strategies
 {
 	public class PopulationGrowthFactorsFacade(IDisasterStrategy disasterStrategy, IMigrationStrategy migrationStrategy)
 		: IPopulationGrowthFactorsFacade
@@ -13,7 +11,8 @@ namespace ApplicationApi.Domain.Strategies
 				CalculateSeasonalGrowthRate(year, seasonalLength, baseGrowthRate, seasonalAmplitude);
 			var logisticGrowthRate =
 				CalculateLogisticGrowthRate(seasonalGrowthRate, environmentCapacity, initialPopulation, year);
-			var populationAfterMigration = migrationStrategy.ApplyMigration(logisticGrowthRate, migrationPerYear);
+			var populationAfterMigration =
+				migrationStrategy.ApplyMigration(logisticGrowthRate, migrationPerYear, environmentCapacity);
 			var endYearPopulation =
 				disasterStrategy.ApplyDisaster(populationAfterMigration, disasterMinLoss, disasterMaxLoss,
 					disasterChance);

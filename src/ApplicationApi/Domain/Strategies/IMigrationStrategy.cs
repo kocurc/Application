@@ -2,6 +2,6 @@
 {
 	public interface IMigrationStrategy
 	{
-		int ApplyMigration(int population, int migrationPerYear);
+		int ApplyMigration(int population, int migrationPerYear, int environmentCapacity);
 	}
 }

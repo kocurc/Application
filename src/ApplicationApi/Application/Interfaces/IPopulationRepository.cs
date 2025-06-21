@@ -1,6 +1,4 @@
-﻿using ApplicationApi.Domain.Entities;
-
-namespace ApplicationApi.Application.Interfaces
+﻿namespace ApplicationApi.Application.Interfaces
 {
 	public interface IPopulationRepository
 	{

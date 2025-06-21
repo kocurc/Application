@@ -1,6 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-
-namespace ApplicationApi.Domain.Exceptions
+﻿namespace ApplicationApi.Domain.Exceptions
 {
     [ExcludeFromCodeCoverage]
     public class InvalidPopulationException : Exception

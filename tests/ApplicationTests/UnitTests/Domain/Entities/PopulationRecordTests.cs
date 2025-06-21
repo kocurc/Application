@@ -1,6 +1,4 @@
-﻿using ApplicationApi.Domain.Entities;
-using ApplicationApi.Domain.Exceptions;
-using FluentAssertions;
+﻿
 
 // Validate platform compatibility
 #pragma warning disable CA1416
