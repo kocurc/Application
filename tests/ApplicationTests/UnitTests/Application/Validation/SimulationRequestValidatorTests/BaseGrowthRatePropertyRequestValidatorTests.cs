@@ -1,9 +1,4 @@
-﻿
-
-// Validate platform compatibility
-#pragma warning disable CA1416
-
-namespace ApplicationTests.UnitTests.Application.Validation.SimulationRequestValidatorTests;
+﻿namespace ApplicationTests.UnitTests.Application.Validation.SimulationRequestValidatorTests;
 
 public class BaseGrowthRatePropertyRequestValidatorTests
 {
@@ -12,6 +7,7 @@ public class BaseGrowthRatePropertyRequestValidatorTests
 	[Test]
 	public void SimulationRequestValidator_GeneratesError_WhenBaseGrowthRateValueIsBelowMinThreshold()
 	{
+		// Arrange
 		var simulationRequestModel = new SimulationRequest(
 			year: 0,
 			years: 1,
@@ -26,8 +22,10 @@ public class BaseGrowthRatePropertyRequestValidatorTests
 			baseGrowthRate: 0.00
 		);
 
+		// Act
 		var validationResult = _simulationRequestValidator.TestValidate(simulationRequestModel);
 
+		// Assert
 		validationResult.ShouldHaveValidationErrorFor("BaseGrowthRate")
 			.WithErrorMessage("Base growth rate should be between 0.01 and 1.00.");
 	}

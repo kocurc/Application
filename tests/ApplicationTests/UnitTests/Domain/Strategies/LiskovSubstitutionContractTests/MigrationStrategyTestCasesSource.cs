@@ -1,4 +1,4 @@
-﻿namespace ApplicationTests.UnitTests.Domain.Strategies
+﻿namespace ApplicationTests.UnitTests.Domain.Strategies.LiskovSubstitutionContractTests
 {
 	public class MigrationStrategyTestCasesSource
 	{

@@ -1,10 +1,4 @@
-﻿
-
-// Validate platform compatibility
-
-#pragma warning disable CA1416
-
-namespace ApplicationTests.UnitTests.Application.UseCases
+﻿namespace ApplicationTests.UnitTests.Application.UseCases
 {
 	[TestFixture]
 	public class RunPopulationSimulationTests
@@ -18,11 +12,11 @@ namespace ApplicationTests.UnitTests.Application.UseCases
 		[Test]
 		public void ExecuteAsync_ThrowsArgumentNullException_WhenSimulationRequestIsNull()
 		{
-			// Act
+			// Arrange
 			var populationSimulationUseCase = new RunPopulationSimulation(_populationRepository,
 				_populationSimulationService, _simulationRequestValidator);
 
-			// Arrange
+			// Act
 			var act = async () => await populationSimulationUseCase.ExecuteAsync(null!);
 
 			// Assert

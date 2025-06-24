@@ -1,9 +1,4 @@
-﻿
-
-// Validate platform compatibility
-#pragma warning disable CA1416
-
-namespace ApplicationTests.UnitTests.Domain.Entities
+﻿namespace ApplicationTests.UnitTests.Domain.Entities
 {
 	[TestFixture]
 	public class PopulationRecordTests
@@ -46,7 +41,7 @@ namespace ApplicationTests.UnitTests.Domain.Entities
 			populationRecord.UpdatePopulation(newPopulationValue);
 
 			// Assert
-			populationRecord.Should().Be(newPopulationValue);
+			populationRecord.Population.Should().Be(newPopulationValue);
 		}
 	}
 }
