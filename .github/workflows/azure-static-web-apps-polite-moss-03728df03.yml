@@ -31,6 +31,17 @@ jobs:
       - name: Build DocFX
         run: docfx build docfx.json
 
+      - name: Add staticwebapp.config.json to _site
+        run: |
+          echo '{
+            "routes": [
+              {
+                "route": "/api",
+                "rewrite": "/api/toc.html"
+              }
+            ]
+          }' > _site/staticwebapp.config.json
+
       # 🔐 Token OIDC – możesz zostawić, jeśli używasz go gdzie indziej
       - name: Install OIDC Client from Core Package
         run: npm install @actions/core@1.6.0 @actions/http-client
