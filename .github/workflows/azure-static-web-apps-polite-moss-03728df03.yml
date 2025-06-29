@@ -23,11 +23,12 @@ jobs:
           submodules: true
           lfs: false
 
-      # ✅ Zainstaluj DocFX
       - name: Install DocFX
         run: dotnet tool install -g docfx
 
-      # ✅ Zbuduj dokumentację
+      - name: Generate metadata
+        run: docfx metadata docfx.json
+
       - name: Build DocFX
         run: docfx build docfx.json
 
