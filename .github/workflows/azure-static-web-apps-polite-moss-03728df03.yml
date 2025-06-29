@@ -55,6 +55,12 @@ jobs:
             return await coredemo.getIDToken()
           result-encoding: string
 
+      - name: Wylistuj zawartość _site
+        run: |
+          echo "::group::Zawartość folderu _site"
+          ls -R _site
+          echo "::endgroup::"
+
       # 🚀 Publikacja do Azure SWA
       - name: Build And Deploy
         id: builddeploy
