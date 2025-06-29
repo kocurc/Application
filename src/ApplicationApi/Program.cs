@@ -1,3 +1,7 @@
+using ApplicationApi.Infrastructure.Database;
+using ApplicationApi.Infrastructure.Repositories;
+using Microsoft.EntityFrameworkCore;
+
 namespace ApplicationApi
 {
     public class Program
@@ -13,12 +17,15 @@ namespace ApplicationApi
 			// Add scoped services (for each new HTTP request a new instance is created)
 			_ = builder.Services.AddScoped<IRunPopulationSimulation, RunPopulationSimulation>();
             _ = builder.Services.AddScoped<IPopulationSimulationService, PopulationSimulationService>();
+            _ = builder.Services.AddScoped<IPopulationGrowthFactorsFacade, PopulationGrowthFactorsFacade>();
+            _ = builder.Services.AddScoped<IPopulationRecordRepository, PopulationRecordRepository>();
 
-            // Add services to the container.
-            _ = builder.Services.AddControllers();
+			// Add services to the container.
+			_ = builder.Services.AddControllers();
+			_ = builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlite("Data Source=population.db"));
 
-            // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-            _ = builder.Services.AddOpenApi();
+			// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
+			_ = builder.Services.AddOpenApi();
 
             // Add FluentValidation validators
             _ = builder.Services.AddValidatorsFromAssemblyContaining<SimulationRequestValidator>();

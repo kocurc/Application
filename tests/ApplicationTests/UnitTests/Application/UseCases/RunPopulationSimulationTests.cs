@@ -3,7 +3,7 @@
 	[TestFixture]
 	public class RunPopulationSimulationTests
 	{
-		private readonly IPopulationRepository _populationRepository = Substitute.For<IPopulationRepository>();
+		private readonly IPopulationRecordRepository _populationRecordRepository = Substitute.For<IPopulationRecordRepository>();
 		private readonly IPopulationSimulationService _populationSimulationService =
 			Substitute.For<IPopulationSimulationService>();
 		private readonly IValidator<SimulationRequest> _simulationRequestValidator =
@@ -13,7 +13,7 @@
 		public void ExecuteAsync_ThrowsArgumentNullException_WhenSimulationRequestIsNull()
 		{
 			// Arrange
-			var populationSimulationUseCase = new RunPopulationSimulation(_populationRepository,
+			var populationSimulationUseCase = new RunPopulationSimulation(_populationRecordRepository,
 				_populationSimulationService, _simulationRequestValidator);
 
 			// Act

@@ -1,7 +1,6 @@
 // Global using directives
 
 global using System.Diagnostics.CodeAnalysis;
-global using System.Runtime.Versioning;
 global using ApplicationApi.Application.DTOs.InputDTOs;
 global using ApplicationApi.Application.Interfaces;
 global using ApplicationApi.Application.ServicesInterfaces;

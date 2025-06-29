@@ -1,7 +1,7 @@
 ﻿namespace ApplicationApi.Application.UseCases
 {
 	public class RunPopulationSimulation(
-		IPopulationRepository populationRepository,
+		IPopulationRecordRepository populationRecordRepository,
 		IPopulationSimulationService populationSimulationService,
 		IValidator<SimulationRequest> simulationRequestValidator) : IRunPopulationSimulation
 	{
@@ -42,7 +42,7 @@
 
 				currentPopulation = populationRecord.Population;
 
-				await populationRepository.SavePopulationRecordAsync(populationRecord, cancellationToken);
+				await populationRecordRepository.AddPopulationAsync(populationRecord, cancellationToken);
 				results.Add(populationRecord);
 			}
 
