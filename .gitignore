@@ -183,12 +183,6 @@ orleans.codegen.cs
 # MSBuild Binary and Structured Log
 *.binlog
 
-# Local History for Visual Studio
-.localhistory/
-
-# Visual Studio History (VSHistory) files
-.vshistory/
-
 # VS Code files for those working on multiple tools
 .vscode/*
 !.vscode/settings.json

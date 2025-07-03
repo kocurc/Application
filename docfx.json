@@ -27,7 +27,8 @@
     "resource": [
       {
         "files": [
-          "documentation/images/**"
+          "documentation/images/**",
+          "documentation/mermaid.js"
         ]
       }
     ],
