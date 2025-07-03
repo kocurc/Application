@@ -10,14 +10,14 @@
           ]
         }
       ],
-      "output": "api"
+      "output": "docs/api"
     }
   ],
   "build": {
     "content": [
       {
         "files": [
-          "**/*.{md,yml}"
+          "docs/**/*.{md,yml}"
         ],
         "exclude": [
           "_site/**"
@@ -27,20 +27,18 @@
     "resource": [
       {
         "files": [
-          "images/**"
+          "docs/images/**"
         ]
       }
     ],
-    "output": "_site",
+    "output": "docs/_site",
     "template": [
       "default",
       "modern"
     ],
     "globalMetadata": {
       "_appName": "Population application",
-      "_appTitle": "Population application",
-      "_enableSearch": true,
-      "pdf": true
+      "_appTitle": "Population application"
     }
   }
 }

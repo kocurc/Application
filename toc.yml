@@ -1,4 +1,4 @@
-- name: Docs
+- name: Pages
   href: docs/
-- name: API
+- name: API reference
   href: api/
