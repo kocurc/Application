@@ -10,14 +10,14 @@
           ]
         }
       ],
-      "output": "docs/api"
+      "output": "documentation/api"
     }
   ],
   "build": {
     "content": [
       {
         "files": [
-          "docs/**/*.{md,yml}"
+          "documentation/**/*.{md,yml}"
         ],
         "exclude": [
           "_site/**"
@@ -27,11 +27,11 @@
     "resource": [
       {
         "files": [
-          "docs/images/**"
+          "documentation/images/**"
         ]
       }
     ],
-    "output": "docs/_site",
+    "output": "documentation/_site",
     "template": [
       "default",
       "modern"

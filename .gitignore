@@ -201,5 +201,5 @@ orleans.codegen.cs
 .nuke/
 
 # Docfx
-docs/_site
-docs/api
+documentation/_site
+documentation/api
