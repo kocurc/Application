@@ -4,8 +4,6 @@ on:
   workflow_dispatch:
   push:
       branches: [ master ]
-  pull_request:
-      branches: [ master ]
 
 jobs:
     build-application:
@@ -22,13 +20,19 @@ jobs:
             dotnet-version: '9.0'
 
         - name: Print repository data
-          run: ./build.sh PrintVersionData
-
-        - name: Restore .NET tools
-          run: ./build.sh RestoreDotNetTools
+          run: ./build.sh PrintRepositoryData
 
         - name: Print version data
           run: ./build.sh PrintVersionData
 
+        - name: Restore .NET tools
+          run: ./build.sh RestoreTools
+
+        - name: Restore projects
+          run: ./build.sh Restore
+
         - name: Build application
           run: ./build.sh Compile
+
+        - name: Create database
+          run: ./build.sh UpdateDatabase --EfProjectPath "src/ApplicationApi/ApplicationApi.csproj"

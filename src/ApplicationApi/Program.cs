@@ -22,7 +22,10 @@ namespace ApplicationApi
 
 			// Add services to the container.
 			_ = builder.Services.AddControllers();
-			_ = builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlite("Data Source=population.db"));
+
+			var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
+			_ = builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlite(connectionString));
 
 			// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 			_ = builder.Services.AddOpenApi();

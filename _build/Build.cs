@@ -1,75 +1,85 @@
-[SuppressMessage("ReSharper", "AllUnderscoreLocalParameterName")]
 internal class Build : NukeBuild
 {
     [GitRepository]
-    private readonly GitRepository _gitRepository;
-
+    public readonly GitRepository GitRepository;
     [GitVersion]
-    private readonly GitVersion _gitVersion;
-
+    public readonly GitVersion GitVersion;
     [Solution]
-    private readonly Solution _solution;
+    public readonly Solution Solution;
 
 	[Parameter("Configuration to build - Default is 'Debug' (local) or 'Release' (server)")]
-	private readonly Configuration _configuration = IsLocalBuild ? Configuration.Debug : Configuration.Release;
+	public readonly Configuration Configuration = IsLocalBuild ? Configuration.Debug : Configuration.Release;
+	[Parameter("Entity Framework update database project path")]
+	public readonly string EfProjectPath;
 
-	private Target Clean => _ => _
+	private Target PrintRepositoryData => _ => _
+		.Executes(() =>
+		{
+			Log.Information("Commit value = {RepositoryCommit}", GitRepository.Commit);
+			Log.Information("Branch value = {RepositoryBranch}", GitRepository.Branch);
+			Log.Information("Endpoint value = {RepositoryEndpoint}", GitRepository.Endpoint);
+			Log.Information("Head value = {RepositoryHead}", GitRepository.Head);
+			Log.Information("HTTPS URL value = {RepositoryHttpsUrl}", GitRepository.HttpsUrl);
+			Log.Information("Identifier value = {RepositoryIdentifier}", GitRepository.Identifier);
+			Log.Information("Local directory value = {RepositoryLocalDirectory}", GitRepository.LocalDirectory);
+			Log.Information("Protocol value = {RepositoryProtocol}", GitRepository.Protocol);
+			Log.Information("RemoteBranch value = {RepositoryRemoteBranch}", GitRepository.RemoteBranch);
+			Log.Information("SSH URL value = {RepositorySshUrl}", GitRepository.SshUrl);
+			Log.Information("Remote name value = {RepositoryRemoteName}", GitRepository.RemoteName);
+			Log.Information("Tags count value = {TagsCount}", GitRepository.Tags.Count);
+		});
+
+	private Target PrintVersionData => _ => _
+		.Executes(() =>
+		{
+			Log.Information("Semantic version = {SemanticVersion}", GitVersion.SemVer);
+			Log.Information("Assembly version = {AssemblyVersion}", GitVersion.AssemblySemVer);
+			Log.Information("Assembly semantic file version = {AssemblySemanticFileVersion}",
+				GitVersion.AssemblySemFileVer);
+			Log.Information("Informational version = {InformationalVersion}",
+				GitVersion.InformationalVersion);
+		});
+	private static Target Clean => _ => _
 		.Executes(() =>
 		{
 			RootDirectory.GlobDirectories("**/bin", "**/obj")
 				.ForEach(directory => directory.DeleteDirectory());
 		});
 
-	private Target RestoreDotNetTools => _ => _
+	private static Target RestoreTools => _ => _
 		.Executes(() =>
 		{
 			DotNetToolRestore();
 		});
 
-	private Target PrintRepositoryData => _ => _
+	private static Target Restore => _ => _
 		.Executes(() =>
 		{
-			Log.Information("Commit value = {RepositoryCommit}", _gitRepository.Commit);
-			Log.Information("Branch value = {RepositoryBranch}", _gitRepository.Branch);
-			Log.Information("Endpoint value = {RepositoryEndpoint}", _gitRepository.Endpoint);
-			Log.Information("Head value = {RepositoryHead}", _gitRepository.Head);
-			Log.Information("HTTPS URL value = {RepositoryHttpsUrl}", _gitRepository.HttpsUrl);
-			Log.Information("Identifier value = {RepositoryIdentifier}", _gitRepository.Identifier);
-			Log.Information("Local directory value = {RepositoryLocalDirectory}", _gitRepository.LocalDirectory);
-			Log.Information("Protocol value = {RepositoryProtocol}", _gitRepository.Protocol);
-			Log.Information("RemoteBranch value = {RepositoryRemoteBranch}", _gitRepository.RemoteBranch);
-			Log.Information("SSH URL value = {RepositorySshUrl}", _gitRepository.SshUrl);
-			Log.Information("Remote name value = {RepositoryRemoteName}", _gitRepository.RemoteName);
-			Log.Information("Tags count value = {TagsCount}", _gitRepository.Tags.Count);
-		});
-
-	private Target PrintVersionData => _ => _
-		.Executes(() =>
-		{
-			Log.Information("Semantic version = {SemanticVersion}", _gitVersion.SemVer);
-			Log.Information("Assembly version = {AssemblyVersion}", _gitVersion.AssemblySemVer);
-			Log.Information("Assembly semantic file version = {AssemblySemanticFileVersion}",
-				_gitVersion.AssemblySemFileVer);
-			Log.Information("Informational version = {InformationalVersion}",
-				_gitVersion.InformationalVersion);
+			DotNetRestore();
 		});
 
 	private Target Compile => _ => _
         .Executes(() =>
         {
 	        DotNetBuild(_ => _
-		        .SetProjectFile(_solution)
-		        .SetConfiguration(_configuration)
-		        .SetVersion(_gitVersion.SemVer)
-		        .SetAssemblyVersion(_gitVersion.AssemblySemVer)
-		        .SetFileVersion(_gitVersion.AssemblySemFileVer)
-		        .SetInformationalVersion(_gitVersion.InformationalVersion));
+		        .SetProjectFile(Solution.ToString())
+		        .SetConfiguration(Configuration.ToString())
+		        .SetVersion(GitVersion.SemVer)
+		        .SetAssemblyVersion(GitVersion.AssemblySemVer)
+		        .SetFileVersion(GitVersion.AssemblySemFileVer)
+		        .SetInformationalVersion(GitVersion.InformationalVersion)
+		        .EnableNoRestore()
+	        );
         });
 
-	public static int Main()
-	{
-		return Execute<Build>(expressions => expressions.Compile); ;
-	}
+	private Target Full => _ => _
+		.DependsOn(Clean, RestoreTools, Restore, Compile);
+
+	private Target UpdateDatabase => _ => _
+		.Executes(() =>
+		{
+			DotNet($"tool run dotnet-ef database update --project {_efProjectPath}");
+		});
 
 	protected override void OnBuildInitialized()
 	{

@@ -23,14 +23,20 @@ jobs:
         with:
           dotnet-version: 9.0.x
 
-      - name: Install DocFX
-        run: dotnet tool install -g docfx
+      - name: Restore dotnet tools
+        run: dotnet tool restore
+
+      - name: Restore projects
+        run: dotnet restore
+
+      - name: Build projects
+        run: dotnet build --no-restore
 
       - name: Generate metadata
-        run: docfx metadata ./documentation/docfx.json
+        run: dotnet tool run docfx metadata ./documentation/docfx.json
 
       - name: Build DocFX
-        run: docfx build ./documentation/docfx.json
+        run: dotnet tool run docfx build ./documentation/docfx.json
 
       - name: Install OIDC Client from Core Package
         run: npm install @actions/core@1.6.0 @actions/http-client
