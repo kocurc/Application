@@ -17,9 +17,7 @@
     "content": [
       {
         "files": [
-          "index.md",
-          "pages/*.md",
-          "toc.yml"
+          "**/*.{md,yml}"
         ],
         "exclude": [
           "_site/**"

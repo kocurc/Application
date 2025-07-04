@@ -3,5 +3,5 @@
 - name: Architecture
   href: pages/architecture.md
 - name: API reference
-  href: api
+  href: api/toc.yml
   
