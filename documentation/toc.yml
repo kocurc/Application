@@ -1,7 +1,7 @@
 - name: Start
-  href: pages/index.md
+  href: index.md
 - name: Architecture
   href: pages/architecture.md
 - name: API reference
-  href: api/toc.yml
+  href: api
   
