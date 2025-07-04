@@ -1,0 +1,8 @@
+{
+  "routes": [
+    {
+      "route": "documentation/api",
+      "rewrite": "documentation/api/toc.html"
+    }
+  ]
+}

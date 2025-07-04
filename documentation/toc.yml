@@ -1,2 +1,7 @@
-- name: Home
-  href: home.md
+- name: Start
+  href: pages/index.md
+- name: Architecture
+  href: pages/architecture.md
+- name: API reference
+  href: api/toc.yml
+  

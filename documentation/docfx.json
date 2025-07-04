@@ -4,20 +4,21 @@
     {
       "src": [
         {
-          "src": "src",
+          "src": "../src",
           "files": [
             "ApplicationApi/ApplicationApi.csproj"
           ]
         }
       ],
-      "output": "documentation/api"
+      "output": "api"
     }
   ],
   "build": {
     "content": [
       {
         "files": [
-          "documentation/**/*.{md,yml}"
+          "pages/*.md",
+          "toc.yml"
         ],
         "exclude": [
           "_site/**"
@@ -27,12 +28,13 @@
     "resource": [
       {
         "files": [
-          "documentation/images/**",
-          "documentation/mermaid.js"
+          "images/**",
+          "js/**",
+          "staticwebapp.config.json"
         ]
       }
     ],
-    "output": "documentation/_site",
+    "output": "_site",
     "template": [
       "default",
       "modern"
