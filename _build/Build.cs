@@ -78,7 +78,7 @@ internal class Build : NukeBuild
 	private Target UpdateDatabase => _ => _
 		.Executes(() =>
 		{
-			DotNet($"tool run dotnet-ef database update --project {_efProjectPath}");
+			DotNet($"tool run dotnet-ef database update --project {EfProjectPath}");
 		});
 
 	protected override void OnBuildInitialized()

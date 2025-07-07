@@ -1,5 +1,6 @@
 ﻿namespace ApplicationApi.Domain.Entities
 {
+    // Entities are objects reflecting a small scope of business rules + business data.
     public class PopulationRecord
     {
 
