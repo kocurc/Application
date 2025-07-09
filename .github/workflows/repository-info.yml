@@ -16,32 +16,35 @@ jobs:
         steps:
             - name: Print repository info
               run: |
-                echo "Print ${{ github.event.inputs.info-type }} repository info"
+                echo "Print basic repository info"
+
                 echo -e "Action: ${{ github.action}}\n" \
-                        "Action's path: ${{ github.action_path}}\n"
-                        "Action's reference: ${{ github.action_ref}}\n"
-                        "Action's repository: ${{ github.action_repository}}\n"
-                        "Actor: ${{ github.actor}}\n"
-                        "Actor's ID: ${{ github.actor_id}}\n"
-                        "API's URL: ${{ github.api_url}}\n"
-                        "Base reference: ${{ github.base_ref}}\n"
-                        "Environment: ${{ github.env}}\n"
-                        "*Environment: ${{ github.event}}\n"
-                        "Event's name: ${{ github.event_name}}\n"
-                        "Event's path: ${{ github.event_path}}\n"
-                        "GraphQL's URL: ${{ github.graphql_url}}\n"
-                        "Head's reference: ${{ github.head_ref}}\n"
-                        "Job: ${{ github.job}}\n"
-                        "Job's SHA: ${{ github.job_workflow_sha}}\n"
-                        "Path: ${{ github.path}}\n"
-                        "Reference: ${{ github.ref}}\n"
+                        "Action's path: ${{ github.action_path}}\n" \
+                        "Action's reference: ${{ github.action_ref}}\n" \
+                        "Action's repository: ${{ github.action_repository}}\n" \
+                        "Actor: ${{ github.actor}}\n" \
+                        "Actor's ID: ${{ github.actor_id}}\n" \
+                        "API's URL: ${{ github.api_url}}\n" \
+                        "Base reference: ${{ github.base_ref}}\n" \
+                        "Environment: ${{ github.env}}\n" \
+                        "*Environment: ${{ github.event}}\n" \
+                        "Event's name: ${{ github.event_name}}\n" \
+                        "Event's path: ${{ github.event_path}}\n" \
+                        "GraphQL's URL: ${{ github.graphql_url}}\n" \
+                        "Head's reference: ${{ github.head_ref}}\n" \
+                        "Job: ${{ github.job}}\n" \
+                        "Job's SHA: ${{ github.job_workflow_sha}}\n" \
+                        "Path: ${{ github.path}}\n" \
+                        "Reference: ${{ github.ref}}"
 
                 case ${{ github.event.inputs.info-type }} in
-
                     extended)
-                        "Event's installation ID: ${{ github.event.installation.id}}\n"
-                        "Event's installation node ID: ${{ github.event.installation.node_id}}\n"
-                        "Event's workflow: ${{ github.event.workflow}}\n"
+                        echo "Print ${{ github.event.inputs.info-type }} repository info"
+                        
+                        echo -e "Event's installation ID: ${{ github.event.installation.id}}\n" \
+                                "Event's installation ID: ${{ github.event.installation.id}}\n" \n
+                                "Event's installation node ID: ${{ github.event.installation.node_id}}\n" \n
+                                "Event's workflow: ${{ github.event.workflow}}"
                         ;;
                     *)
                         echo "Unsupported info-type"
