@@ -1,6 +1,9 @@
 name: Print repository info
 
 on: 
+    repository_dispatch:
+        types:
+            - webhook
     workflow_dispatch:
         inputs:
             info-type:
@@ -40,7 +43,7 @@ jobs:
                 case ${{ github.event.inputs.info-type }} in
                     extended)
                         echo "Print ${{ github.event.inputs.info-type }} repository info"
-                        
+
                         echo -e "Event's installation ID: ${{ github.event.installation.id}}\n" \
                                 "Event's installation ID: ${{ github.event.installation.id}}\n" \n
                                 "Event's installation node ID: ${{ github.event.installation.node_id}}\n" \n
