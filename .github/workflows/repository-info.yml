@@ -143,9 +143,9 @@ jobs:
                 echo "Greet: ${{ steps.say-hello.outputs.greeting }}"
             - name: Hello from URL
               id: say-hello-from-URL
-              uses: kocurc/greet@0.0.1
+              uses: kocurc/greet@0.0.2
               with:
                 name: Horacy
             - name: Show the output
               run: |
-                echo "Greet: ${{ steps.say-hello-from-URL.outputs.greeting }}"
+                echo "Greet: ${{ steps.say-hello-from-URL.outputs.greetings }}"
