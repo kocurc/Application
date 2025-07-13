@@ -64,7 +64,7 @@ jobs:
         steps:
             - name: Set an extra environment variable
               run: |
-                echo "EXTRA_ENV=extra environment variable" >> $github
+                echo "EXTRA_ENV=extra environment variable" >> $GITHUB_ENV
             - name: Add an extra PATH value
               run: |
                 echo "~/" >> $GITHUB_PATH
@@ -82,6 +82,8 @@ jobs:
               run: |
                 echo "The added output parameter's value ${{ steps.output_step.outputs.extra_output }}"
     read-variables:
+        env:
+            EVENT_ENV: ${{ github.event_name}}
         runs-on: ubuntu-latest
         steps:
             - name: Read environment variables
@@ -98,5 +100,6 @@ jobs:
             - name: Complete workflow
               run: |
                 echo "::add-mask::An actor's name: ${{ github.actor }}"
+                echo "The workflow's event: $EVENT_ENV"
                 echo "::debug::A debug process completion"
-        
+            
