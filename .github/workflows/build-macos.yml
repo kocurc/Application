@@ -12,7 +12,7 @@ on:
 jobs:
     build-application-macos:
       name: Build the appplication on MacOS
-      runs-on: [self-hosted, macOS]
+      runs-on: [self-hosted, macOS]        
 
       steps:
       - name: Checkout repository

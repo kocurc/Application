@@ -15,11 +15,17 @@ on:
                     - extended
 env: 
     continue: true
+    TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
     print-repository-info:
         if: github.event != 'repository_dispatch'
         runs-on: ubuntu-latest
+        services:
+            redis-service:
+                image: redis:latest
+                ports:
+                    - 6379:6379
         steps:
             - name: Print repository info
               continue-on-error: ${{ fromJson(env.continue) }}
@@ -82,9 +88,13 @@ jobs:
               run: |
                 echo "The added output parameter's value ${{ steps.output_step.outputs.extra_output }}"
     read-variables:
+        needs: set-variables
         env:
             EVENT_ENV: ${{ github.event_name}}
         runs-on: ubuntu-latest
+        defaults:
+          run:
+            working-directory: ./scripts
         steps:
             - name: Read environment variables
               run: |
@@ -101,5 +111,41 @@ jobs:
               run: |
                 echo "::add-mask::An actor's name: ${{ github.actor }}"
                 echo "The workflow's event: $EVENT_ENV"
+                echo "Token: ${{ env.TOKEN }}"
                 echo "::debug::A debug process completion"
-            
+            - name: Run a test script
+              run: ./test.sh
+            - name: Check redis availability
+              run: |
+                redis-cli -h localhost ping
+    custom-job:
+        runs-on: ubuntu-latest
+        environment: DefaultEnvironment
+        steps:
+            - name: Cache value
+              id: cached-value
+              uses: actions/cache@v4
+              with:
+                path: ./.editorconfig
+                key: editorconfig
+            - name: Use cached value
+              if: steps.cached-value.outputs.cache-hit == true
+              run: |
+                echo "Cache hit"
+                        - name: Checkout code
+            - name: Hello
+              id: say-hello
+              uses: ./actions/test
+              with:
+                name: Horacy
+            - name: Show the output
+              run: |
+                echo "Greet: ${{ steps.say-hello.outputs.greeting }}"
+            - name: Hello from URL
+              id: say-hello-from-URL
+              uses: kocurc/greet@0.0.1
+              with:
+                name: Horacy
+            - name: Show the output
+              run: |
+                echo "Greet: ${{ steps.say-hello-from-URL.outputs.greeting }}"
