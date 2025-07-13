@@ -13,11 +13,16 @@ on:
                 options:
                     - basic
                     - extended
+env: 
+    continue: true
+
 jobs:
     print-repository-info:
-        runs-on: ubuntu-latest
+        if: github.event != 'repository_dispatch'
+        runs-on: [ubuntu-latest, windows-latest]
         steps:
             - name: Print repository info
+              continue-on-error: ${{ fromJson(env.continue) }}
               run: |
                 echo "Print basic repository info"
 
@@ -52,4 +57,5 @@ jobs:
                     *)
                         echo "Unsupported info-type"
                         ;;
-                esac            
+                esac
+              shell: powershell
