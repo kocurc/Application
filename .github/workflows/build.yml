@@ -1,23 +1,13 @@
 name: Build application
 
 on:
-  workflow_dispatch:
-    inputs:
-      run-self-hosted-macos:
-        description: Run build on a self-hosted MacOS environment
-        required: false
-        default: false
-        type: boolean
   push:
       branches: [ master ]
 
 jobs:
     build-application:
-        strategy:
-          matrix:
-            operation-system: [ubuntu-latest, windows-latest]
-        name: Build appplication
-        runs-on: ${{ matrix.operation-system }}
+        name: Build the appplication
+        runs-on: [ubuntu-latest, windows-latest]
 
         steps:
         - name: Checkout repository
@@ -45,35 +35,4 @@ jobs:
 
         - name: Create database
           run: ./build.sh UpdateDatabase --EfProjectPath "src/ApplicationApi/ApplicationApi.csproj"
-
-    build-application-macos:
-      name: Build appplication on MacOS
-      runs-on: [self-hosted, macOS]
-
-      steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: '9.0'
-
-      - name: Print repository data
-        run: ./build.sh PrintRepositoryData
-
-      - name: Print version data
-        run: ./build.sh PrintVersionData
-
-      - name: Restore .NET tools
-        run: ./build.sh RestoreTools
-
-      - name: Restore projects
-        run: ./build.sh Restore
-
-      - name: Build application
-        run: ./build.sh Compile
-
-      - name: Create database
-        run: ./build.sh UpdateDatabase --EfProjectPath "src/ApplicationApi/ApplicationApi.csproj"
         

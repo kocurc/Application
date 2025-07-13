@@ -19,7 +19,7 @@ env:
 jobs:
     print-repository-info:
         if: github.event != 'repository_dispatch'
-        runs-on: [ubuntu-latest, windows-latest]
+        runs-on: ubuntu-latest
         steps:
             - name: Print repository info
               continue-on-error: ${{ fromJson(env.continue) }}
@@ -59,3 +59,44 @@ jobs:
                         ;;
                 esac
               shell: powershell
+    set-variables:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Set an extra environment variable
+              run: |
+                echo "EXTRA_ENV=extra environment variable" >> $github
+            - name: Add an extra PATH value
+              run: |
+                echo "~/" >> $GITHUB_PATH
+            - name: Set an output parameter
+              id: output_step
+              run: |
+                echo "extra_output=extra output parameter" >> $GITHUB_OUTPUT
+            - name: Read environment variables
+              run: |
+                echo $GITHUB_ENV
+            - name: Read the PATH values
+              run: |
+                echo $GITHUB_PATH
+            - name: Read the added output parameter's value
+              run: |
+                echo "The added output parameter's value ${{ steps.output_step.outputs.extra_output }}"
+    read-variables:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Read environment variables
+              run: |
+                echo "::group::Reading \$GITHUB_ENV variables"
+                echo $GITHUB_ENV
+                echo "::endgroup::"
+            - name: Read the PATH values
+              run: |
+                echo $GITHUB_PATH
+            - name: Read the added output parameter's value
+              run: |
+                echo "The added output parameter's value ${{ steps.output_step.outputs.extra_output }}"
+            - name: Complete workflow
+              run: |
+                echo "::add-mask::An actor's name: ${{ github.actor }}"
+                echo "::debug::A debug process completion"
+        
