@@ -1,5 +1,10 @@
 internal class Build : NukeBuild
 {
+	private static void Main(string[] args)
+	{
+
+	}
+
     [GitRepository]
     public readonly GitRepository GitRepository;
     [GitVersion]
@@ -39,6 +44,7 @@ internal class Build : NukeBuild
 			Log.Information("Informational version = {InformationalVersion}",
 				GitVersion.InformationalVersion);
 		});
+
 	private static Target Clean => _ => _
 		.Executes(() =>
 		{

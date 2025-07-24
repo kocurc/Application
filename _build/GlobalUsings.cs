@@ -1,7 +1,6 @@
 // Global using directives
 
 global using System.ComponentModel;
-global using System.Diagnostics.CodeAnalysis;
 global using Nuke.Common;
 global using Nuke.Common.CI.GitHubActions;
 global using Nuke.Common.Execution;
