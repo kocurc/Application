@@ -41,8 +41,7 @@ jobs:
         id: build-blazor-frontend
         uses: docker/build-push-action@v6
         with:
-          context: src
-          file: Blazor/Dockerfile
+          context: ./src/Blazor
           tags: ghcr.io/${{ github.repository_owner }}/application-frontend:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
@@ -51,8 +50,7 @@ jobs:
         id: build-api-backend
         uses: docker/build-push-action@v6
         with:
-          context: src
-          file: Api/Dockerfile
+          context: ./src/Api
           tags: ghcr.io/${{ github.repository_owner }}/application-backend:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
