@@ -37,8 +37,8 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build and push Blazor frontend
-        id: build-blazor-frontend
+      - name: Build and push frontend
+        id: build-frontend
         uses: docker/build-push-action@v6
         with:
           context: ./src/Blazor
@@ -46,8 +46,8 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-      - name: Build and push API backend
-        id: build-api-backend
+      - name: Build and push backend
+        id: build-backend
         uses: docker/build-push-action@v6
         with:
           context: ./src/Api
@@ -56,9 +56,7 @@ jobs:
           cache-to: type=gha,mode=max
 
       - name: Sign Blazor frontend
-        if: ${{ github.event_name != 'pull_request' }}
         run: cosign sign --yes ghcr.io/${{ github.repository_owner }}/application-frontend:latest
 
       - name: Sign API backend
-        if: ${{ github.event_name != 'pull_request' }}
         run: cosign sign --yes ghcr.io/${{ github.repository_owner }}/application-backend:latest
