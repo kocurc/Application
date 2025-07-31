@@ -10,6 +10,8 @@
 
 	<ItemGroup>
 		<PackageReference Include="Nuke.Common" Version="9.0.4" />
+		<!-- Transitive dependency vulnerability --> 
+		<PackageReference Include="Microsoft.Build.Tasks.Core" Version="17.13.26" />
 	</ItemGroup>
 
 </Project>
