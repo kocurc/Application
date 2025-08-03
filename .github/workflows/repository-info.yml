@@ -1,6 +1,6 @@
 name: Print repository info
 
-on: 
+on:
     repository_dispatch:
         types:
             - webhook
@@ -13,7 +13,7 @@ on:
                 options:
                     - basic
                     - extended
-env: 
+env:
     continue: true
     TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

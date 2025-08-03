@@ -35,4 +35,3 @@ jobs:
 
         - name: Create database
           run: ./build.sh UpdateDatabase --EfProjectPath "src/ApplicationApi/ApplicationApi.csproj"
-        

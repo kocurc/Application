@@ -2,10 +2,14 @@ FROM mcr.microsoft.com/dotnet/sdk@sha256:9b0a4330cb3dac23ebd6df76ab4211ec5903907
 WORKDIR /api
 
 COPY Api.csproj ./
+COPY ../../CleanArchitecture/Domain/Domain.csproj ../../Domain/
+COPY ../../CleanArchitecture/Infrastructure/Infrastructure.csproj ../../Inftrastructure/
+COPY ../../CleanArchitecture/Application/Application.csproj ../../Application/
 # Download NuGet packages. It creates obj folder with project.assets.json with the list of downloaded depenedencies
 RUN dotnet restore
 
 COPY . ./
+COPY ../../CleanArchitecture ../../CleanArchitecture/
 RUN dotnet publish --configuration Release --output ./publish
 
 # RUNTIME STAGE, It creates new file system that weighs less than previous stage
