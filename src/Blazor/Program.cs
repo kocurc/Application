@@ -1,5 +1,3 @@
-using Blazor.Components;
-
 namespace Blazor;
 
 public class Program
