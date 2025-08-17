@@ -1,0 +1,17 @@
+name: Print repository information
+
+on: [push]
+
+jobs:
+    print-repository-information:
+        runs-on: ubuntu-latest
+        steps:
+          
+            - name: Checkout code
+              uses: actions/checkout@v4
+
+            - name: Install actions core npm package
+              run: npm install @actions/core
+
+            - name: Print repository information
+              uses: ./.github/workflows/actions/print-repository-information

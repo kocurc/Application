@@ -1,9 +1,0 @@
-{
-    "name": "test-action",
-    "version": "1.0.0",
-    "description": "Testing purpose",
-    "main": "index.js",
-    "dependencies": {
-        "@actions/core": "^1.11.1"
-    }
-}
