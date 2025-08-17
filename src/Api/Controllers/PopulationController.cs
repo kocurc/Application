@@ -26,7 +26,6 @@ namespace Api.Controllers
 			_logger.LogError("No population records were found.");
 
 			return NotFound("No population records were found.");
-
 		}
 	}
 }
