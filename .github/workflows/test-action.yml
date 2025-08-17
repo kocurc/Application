@@ -10,4 +10,4 @@ jobs:
               uses: actions/checkout@v4
             - name: Hello
               id: say-hello
-              uses: ./actions/test
+              uses: ./.github/workflows/actions/test
