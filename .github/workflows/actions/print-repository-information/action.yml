@@ -1,0 +1,12 @@
+name: "Test action"
+description: "Greet someone"
+inputs:
+    name:
+        description: "Person's name"
+        required: true
+outputs:
+    greetings:
+        description: "The full greeting"
+runs:
+    using: "node20"
+    main: index.js
