@@ -118,6 +118,8 @@ jobs:
             - name: Check redis availability
               run: |
                 redis-cli -h localhost ping
+
+                
     custom-job:
         runs-on: ubuntu-latest
         environment: DefaultEnvironment

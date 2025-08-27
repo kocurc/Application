@@ -13,5 +13,8 @@ jobs:
             - name: Install actions core npm package
               run: npm install @actions/core
 
+            - name: Install actions github npm package
+              run: npm install @actions/github
+
             - name: Print repository information
               uses: ./.github/workflows/actions/print-repository-information

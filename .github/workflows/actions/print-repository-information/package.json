@@ -1,9 +1,10 @@
 {
-    "name": "test-action",
+    "name": "print-repository-information",
     "version": "1.0.0",
-    "description": "Testing purpose",
+    "description": "Handle printing basic and advanced repository information",
     "main": "index.js",
     "dependencies": {
-        "@actions/core": "^1.11.1"
+        "@actions/core": "^1.11.1",
+        "@actions/github": "^6.0.1"
     }
 }

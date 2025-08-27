@@ -1,4 +1,5 @@
 const core = require('@actions/core');
+const github = requure('@actions/github');
 
 try {
     const name = core.getInput('name', {

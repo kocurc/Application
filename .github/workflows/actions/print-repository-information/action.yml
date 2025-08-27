@@ -1,12 +1,10 @@
-name: "Test action"
-description: "Greet someone"
+name: "Print repository information"
+description: "Based on the provided input print basic or extended repository information"
+author: kocurc
 inputs:
-    name:
-        description: "Person's name"
+    repository-information-type:
+        description: "Type of repository information to print: basic or extended"
         required: true
-outputs:
-    greetings:
-        description: "The full greeting"
 runs:
-    using: "node20"
+    using: "node24"
     main: index.js
