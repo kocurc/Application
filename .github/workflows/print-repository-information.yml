@@ -1,12 +1,24 @@
 name: Print repository information
 
-on: [push]
+on:
+  workflow_dispatch:
+    inputs:
+      repository-information-type:
+        description: "Type of repository information to print: basic or extended"
+        required: true
+        default: basic
+        type: choice
+        options:
+          - basic
+          - extended
+  push:
+    branches:
+      - master
 
 jobs:
     print-repository-information:
         runs-on: ubuntu-latest
         steps:
-          
             - name: Checkout code
               uses: actions/checkout@v4
 
@@ -18,3 +30,6 @@ jobs:
 
             - name: Print repository information
               uses: ./.github/workflows/actions/print-repository-information
+              with:
+                repository-information-type: ${{ github.event.inputs.repository-information-type }}
+
