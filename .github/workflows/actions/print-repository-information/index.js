@@ -13,7 +13,8 @@ try {
     }
     else if (repositoryInformationType === "extended") {
         console.log("\nPrint extended repository info:\n");
-        console.log(`Event's installation ID: ${context.payload.installation.id}`);
+        console.log(`Event's name: ${context.eventName}`);
+
     }
     else {
         console.log("Unsupported repository-information-type")
