@@ -2,7 +2,7 @@ const core = require('@actions/core');
 const github = require('@actions/github');
 
 try {
-    const repositoryInformationType = core.getInput("repository-information-type");
+    const repositoryInformationType = core.getInput("repository-information-type") || "basic";
     const context = github.context;
 
     console.log(`Chosen repository-information-type: ${repositoryInformationType}\n`);
