@@ -19,7 +19,7 @@ jobs:
     - name: Get changed files
       id: changed_files
       run: |
-        git diff --name-only > changed_files.txt
+        git diff --name-only ${{ github.event.before }} ${{ github.sha }} > changed_files.txt
 
     - name: Check if documentation folder was changed
       id: documentation-folder
