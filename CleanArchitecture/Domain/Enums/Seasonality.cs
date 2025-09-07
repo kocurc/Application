@@ -6,12 +6,12 @@
 	public enum Seasonality
 	{
 		/// <summary>
-		/// One period per year.
+		/// One period per year
 		/// </summary>
 		Yearly = 1,
 
 		/// <summary>
-		/// Twelve periods per year.
+		/// Twelve periods per year
 		/// </summary>
 		Monthly = 12,
 	}
