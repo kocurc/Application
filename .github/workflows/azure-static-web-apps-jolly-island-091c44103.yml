@@ -34,7 +34,7 @@ jobs:
       id: documentation-comments
       run: |
         echo "were_documentation_comments_changed=false" >> $GITHUB_OUTPUT
-        echo "Changed files: $(cat changed_files.txt)"
+        echo "Changed files:\n$(cat changed_files.txt)"
 
         while read -r changed_file; do
           if grep --quiet '^\s*///' "$changed_file"; then
