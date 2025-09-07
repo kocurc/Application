@@ -46,6 +46,7 @@ jobs:
           echo "should_run_deploy=true" >> $GITHUB_OUTPUT
         else
           echo "should_run_deploy=false" >> $GITHUB_OUTPUT
+        fi
 
   build-and-deploy-job:
     needs: check-deploy-condition
