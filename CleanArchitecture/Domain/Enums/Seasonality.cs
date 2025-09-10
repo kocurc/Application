@@ -1,7 +1,7 @@
 ﻿namespace Domain.Enums
 {
 	/// <summary>
-	/// Represents the time-based seasonality that is used in calculations.
+	/// Represents the time-based seasonality that is used in calculations
 	/// </summary>
 	public enum Seasonality
 	{
