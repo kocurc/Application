@@ -1,15 +1,12 @@
 internal class Build : NukeBuild
 {
-	private static void Main(string[] args)
-	{
-
-	}
+	private static void Main(string[] args) { }
 
     [GitRepository]
     public readonly GitRepository GitRepository;
-    [GitVersion]
+    [GitVersion(]
     public readonly GitVersion GitVersion;
-    [Solution]
+    [Solution()]
     public readonly Solution Solution;
 
 	[Parameter("Configuration to build - Default is 'Debug' (local) or 'Release' (server)")]

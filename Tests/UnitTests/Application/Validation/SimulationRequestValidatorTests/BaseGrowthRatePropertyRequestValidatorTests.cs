@@ -6,23 +6,14 @@ public class BaseGrowthRatePropertyRequestValidatorTests
 {
 	private readonly SimulationRequestValidator _simulationRequestValidator = new();
 
-	[Test]
+	[Test(Description = "SimulationRequestValidator_GeneratesError_WhenBaseGrowthRateValueIsBelowMinThreshold")]
 	public void SimulationRequestValidator_GeneratesError_WhenBaseGrowthRateValueIsBelowMinThreshold()
 	{
 		// Arrange
-		var simulationRequestModel = new SimulationRequest(
-			year: 0,
-			years: 1,
-			initialPopulation: 2,
-			amplitude: 0.02,
-			capacity: 20,
-			migration: 0,
-			seasonality: Seasonality.Yearly,
-			disasterChance: 0.01,
-			disasterMinLoss: 0,
-			disasterMaxLoss: 5,
-			baseGrowthRate: 0.00
-		);
+		var simulationRequestModel = new SimulationRequestBuilder()
+			.WithYears(1).WithInitialPopulation(2).WithAmplitude(0.02)
+			.WithCapacity(20).WithSeasonality(Seasonality.Yearly)
+			.WithDisasterChance(0.01).WithDisasterMinLoss(0).WithDisasterMaxLoss(5).WithBaseGrowthRate(0.00).Build();
 
 		// Act
 		var validationResult = _simulationRequestValidator.TestValidate(simulationRequestModel);

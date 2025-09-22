@@ -2,31 +2,46 @@
 
 namespace Application.DTOs.InputDTOs
 {
-    public class SimulationRequest(
-	    int year,
-	    int years,
-	    int initialPopulation,
-	    double amplitude,
-	    int capacity,
-	    int migration,
-	    Seasonality seasonality,
-	    double disasterChance,
-	    int disasterMinLoss,
-	    int disasterMaxLoss,
-	    double baseGrowthRate)
+    public class SimulationRequest
     {
-	    /// <summary>
+	    public SimulationRequest(
+		    int year = 0,
+		    int years = 10,
+		    int initialPopulation = 1000,
+		    double amplitude = 0.1,
+		    int capacity = 5000,
+		    int migration = 0,
+		    Seasonality seasonality = Seasonality.Monthly,
+		    double disasterChance = 0.05,
+		    int disasterMinLoss = 10,
+		    int disasterMaxLoss = 100,
+		    double baseGrowthRate = 0.05)
+	    {
+		    Year = year;
+		    Year = years;
+            InitialPopulation = initialPopulation;
+            Amplitude = amplitude;
+            Capacity = capacity;
+            Migration = migration;
+            Seasonality = seasonality;
+            DisasterChance = disasterChance;
+            DisasterMinLoss = disasterMinLoss;
+            DisasterMaxLoss = disasterMaxLoss;
+            BaseGrowthRate = baseGrowthRate;
+		}
+
+        /// <summary>
         /// A simulation start year.
         /// </summary>
         /// <value>
         /// 0 means a first year of a simulation.
         /// </value>
-        public int Year { get; init; } = year;
+        public int Year { get; set; }
 
         /// <summary>
         /// A number of simulation years.
         /// </summary>
-        public int Years { get; init; } = years;
+        public int Years { get; set; }
 
         /// <summary>
         /// An initial population.
@@ -37,7 +52,7 @@ namespace Application.DTOs.InputDTOs
         /// <value>
         /// Value must be greater than 0.
         /// </value>
-        public int InitialPopulation { get; init; } = initialPopulation;
+        public int InitialPopulation { get; set; }
 
         /// <summary>
         /// A seasonal amplitude.
@@ -48,7 +63,7 @@ namespace Application.DTOs.InputDTOs
         /// <value>
         /// It takes values from a range: 0.00 - 1.00.
         /// </value>
-        public double Amplitude { get; init; } = amplitude;
+        public double Amplitude { get; set; }
 
         /// <summary>
         /// Environment capacity.
@@ -59,7 +74,7 @@ namespace Application.DTOs.InputDTOs
         /// <value>
         /// Value should greater than initial population.
         /// </value>
-        public int Capacity { get; init; } = capacity;
+        public int Capacity { get; set; }
 
         /// <summary>
         /// A migration per year.
@@ -70,7 +85,7 @@ namespace Application.DTOs.InputDTOs
         /// A minimum migration should greater or equal to a negative value of the InitialPopulation Growth result.
         /// </para>
         /// </value>
-        public int Migration { get; init; } = migration;
+        public int Migration { get; set; }
 
         /// <summary>
         /// A season length.
@@ -81,7 +96,7 @@ namespace Application.DTOs.InputDTOs
         /// 1 means an annual seasonality
         /// </para>
         /// </value>
-        public Seasonality Seasonality { get; init; } = seasonality;
+        public Seasonality Seasonality { get; set; }
 
         /// <summary>
         /// A disaster percentage chance.
@@ -92,7 +107,7 @@ namespace Application.DTOs.InputDTOs
         /// <value>
         /// It takes values from a range: 0.00 - 1.00.
         /// </value>
-        public double DisasterChance { get; init; } = disasterChance;
+        public double DisasterChance { get; set; }
 
         /// <summary>
         ///	A minimal number of disaster casualties.
@@ -100,7 +115,7 @@ namespace Application.DTOs.InputDTOs
         /// <value>
         ///	A minimal value should greater or equal to 0 and less than a maximum value.
         /// </value>
-        public int DisasterMinLoss { get; init; } = disasterMinLoss;
+        public int DisasterMinLoss { get; set; }
 
         /// <summary>
         /// A maximum number of catastrophe casualties.
@@ -109,7 +124,7 @@ namespace Application.DTOs.InputDTOs
         ///	A maximum value should be greater or equal to a minimum value and less than or equal to
         /// InitialPopulation Growth result after Migration.
         /// </value>
-        public int DisasterMaxLoss { get; init; } = disasterMaxLoss;
+        public int DisasterMaxLoss { get; set; }
 
         /// <summary>
         /// A base growth rate.
@@ -117,6 +132,6 @@ namespace Application.DTOs.InputDTOs
         /// <value>
         /// It takes values from a range: 0.00 - 1.00.
         /// </value>
-        public double BaseGrowthRate { get; init; } = baseGrowthRate;
+        public double BaseGrowthRate { get; set; }
     }
 }

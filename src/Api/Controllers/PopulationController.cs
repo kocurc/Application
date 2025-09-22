@@ -3,8 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers
 {
-	[Route("api/[controller]")]
-	[ApiController]
+	[Route("api/[controller]"), ApiController]
 	public class PopulationController(
 		PopulationRecordRepository populationRecordRepository,
 		ILogger<PopulationController> logger)
