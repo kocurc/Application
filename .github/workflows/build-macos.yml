@@ -12,11 +12,18 @@ on:
 permissions: read-all
 
 jobs:
+
     build-application-macos:
       name: Build the appplication on MacOS
       runs-on: [self-hosted, macOS]
 
       steps:
+      
+      - name: Harden Runner
+        uses: step-security/harden-runner@f4a75cfd619ee5ce8d5b864b0d183aff3c69b55a # v2.13.1
+        with:
+          egress-policy: audit
+      
       - name: Checkout repository
         uses: actions/checkout@v4
 
