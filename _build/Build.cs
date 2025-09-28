@@ -4,9 +4,9 @@ internal class Build : NukeBuild
 
     [GitRepository]
     public readonly GitRepository GitRepository;
-    [GitVersion(]
+    [GitVersion]
     public readonly GitVersion GitVersion;
-    [Solution()]
+    [Solution]
     public readonly Solution Solution;
 
 	[Parameter("Configuration to build - Default is 'Debug' (local) or 'Release' (server)")]
