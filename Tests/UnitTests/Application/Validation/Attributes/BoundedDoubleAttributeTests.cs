@@ -29,7 +29,7 @@ namespace Tests.UnitTests.Application.Validation.Attributes
 		// Given_Then_When
 		[Test(Description = "IsValid_ReturnsTrue_WhenValueIsInTheRange")]
 		// Arrange Act Assert
-		public void IsValid_ReturnsTrue_WhenValueIsNull()
+		public void IsValid_ReturnsTrue_WhenValueIsInRange()
 		{
 			// Arrange
 			const double minimum = 0.90;
@@ -45,7 +45,7 @@ namespace Tests.UnitTests.Application.Validation.Attributes
 		// Given_Then_When
 		[Test(Description = "IsValid_ReturnsFalse_WhenValueIsBelowTheRange")]
 		// Arrange Act Assert
-		public void IsValid_ReturnsFalse_WhenValueIsNull()
+		public void IsValid_ReturnsFalse_WhenValueIsOutOfRange()
 		{
 			// Arrange
 			const double minimum = 0.9;
@@ -66,7 +66,7 @@ namespace Tests.UnitTests.Application.Validation.Attributes
 			// Arrange
 			const double minimum = 0.9;
 			const double maximum = 0.99;
-			const double boundedValue = 0.89;
+			double? boundedValue = null;
 
 			_boundedDoubleAttribute = new BoundedDoubleAttribute(minimum, maximum);
 
