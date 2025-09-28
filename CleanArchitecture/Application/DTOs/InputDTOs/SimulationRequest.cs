@@ -1,4 +1,5 @@
-﻿using Domain.Enums;
+﻿using Application.Validation.Attributes;
+using Domain.Enums;
 
 namespace Application.DTOs.InputDTOs
 {
@@ -63,6 +64,7 @@ namespace Application.DTOs.InputDTOs
         /// <value>
         /// It takes values from a range: 0.00 - 1.00.
         /// </value>
+        [BoundedDouble(0.00, 1.00)]
         public double Amplitude { get; set; }
 
         /// <summary>
@@ -107,6 +109,7 @@ namespace Application.DTOs.InputDTOs
         /// <value>
         /// It takes values from a range: 0.00 - 1.00.
         /// </value>
+        [BoundedDouble(0.00, 1.00)]
         public double DisasterChance { get; set; }
 
         /// <summary>
@@ -130,8 +133,9 @@ namespace Application.DTOs.InputDTOs
         /// A base growth rate.
         /// </summary>
         /// <value>
-        /// It takes values from a range: 0.00 - 1.00.
+        /// It takes values from a range: 0.01 - 1.00.
         /// </value>
-        public double BaseGrowthRate { get; set; }
+        [BoundedDouble(0.01, 1.00)]
+		public double BaseGrowthRate { get; set; }
     }
 }

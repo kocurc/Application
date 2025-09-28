@@ -6,7 +6,9 @@ public class BaseGrowthRatePropertyRequestValidatorTests
 {
 	private readonly SimulationRequestValidator _simulationRequestValidator = new();
 
+	// Given_Then_When
 	[Test(Description = "SimulationRequestValidator_GeneratesError_WhenBaseGrowthRateValueIsBelowMinThreshold")]
+	// Arrange Act Assert
 	public void SimulationRequestValidator_GeneratesError_WhenBaseGrowthRateValueIsBelowMinThreshold()
 	{
 		// Arrange

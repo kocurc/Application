@@ -1,4 +1,5 @@
 ﻿using Application.DTOs.InputDTOs;
+using Application.Validation.Attributes;
 using Domain.Enums;
 using FluentValidation;
 
@@ -8,13 +9,24 @@ namespace Application.Validation
 	{
 		public SimulationRequestValidator()
 		{
+			var baseGrowthRateConstraint = new BoundedDoubleAttribute(0.01, 1.00);
+			var amplitudeConstraint = new BoundedDoubleAttribute(0.00, 1.00);
+			var disasterChanceConstraint = new BoundedDoubleAttribute(0.00, 1.00);
+
 			// Base growth rate
-			_ = RuleFor(simulationRequest => simulationRequest.BaseGrowthRate).InclusiveBetween(0.01, 1.00)
-				.WithMessage("Base growth rate should be between 0.01 and 1.00.");
+			_ = RuleFor(simulationRequest => simulationRequest.BaseGrowthRate)
+				.Must(doubleValue => baseGrowthRateConstraint.IsValid(doubleValue))
+				.WithMessage(baseGrowthRateConstraint.ErrorMessage);
 
 			// Amplitude
-			_ = RuleFor(simulationRequest => simulationRequest.Amplitude).InclusiveBetween(0.00, 1.00)
-				.WithMessage("Amplitude should be between 0.00 and 1.00.");
+			_ = RuleFor(simulationRequest => simulationRequest.Amplitude)
+				.Must(doubleValue => amplitudeConstraint.IsValid(doubleValue))
+				.WithMessage(amplitudeConstraint.ErrorMessage);
+
+			// Disaster chance
+			_ = RuleFor(simulationRequest => simulationRequest.DisasterChance)
+				.Must(doubleValue => disasterChanceConstraint.IsValid(doubleValue))
+				.WithMessage(disasterChanceConstraint.ErrorMessage);
 
 			// Seasonality
 			_ = RuleFor(simulationRequest => simulationRequest.Seasonality)
