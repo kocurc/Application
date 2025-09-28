@@ -7,6 +7,8 @@ on:
   schedule:
     - cron: '0 1 * * 1' # Run it at 1:00 on Mondays
 
+permissions: read-all
+
 jobs:
 
   analyze:

@@ -9,6 +9,8 @@ on:
         default: false
         type: boolean
 
+permissions: read-all
+
 jobs:
     build-application-macos:
       name: Build the appplication on MacOS
