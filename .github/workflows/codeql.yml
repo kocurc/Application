@@ -1,49 +1,47 @@
-name: "CodeQL Advanced"
+name: CodeQL advanced
 
 on:
   workflow_dispatch:
   push:
-    branches: [ "master" ]
+    branches: [ master ]
   schedule:
-    - cron: '0 1 * * 1' # Run it at 1:00 on Mondays
+    - cron: 0 1 * * 1 # Run it at 1:00 on Mondays
 
 permissions: read-all
 
 jobs:
-
   analyze:
     name: Analyze (${{ matrix.language }})
-    runs-on: 'ubuntu-latest'
+    runs-on: ubuntu-latest
     permissions:
       security-events: write
       packages: read
     strategy:
       fail-fast: false
       matrix:
-        language: [csharp]
+        language: [ csharp ]
 
     steps:
-
-    - name: Harden Runner
+    - name: Harden runner
       uses: step-security/harden-runner@f4a75cfd619ee5ce8d5b864b0d183aff3c69b55a # v2.13.1
       with:
         egress-policy: audit
 
     - name: Checkout repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
 
     - name: Setup .NET 9.0
-      uses: actions/setup-dotnet@v4
+      uses: actions/setup-dotnet@d4c94342e560b34958eacfc5d055d21461ed1c5d # v5.0.0
       with:
-        dotnet-version: '9.0.x'
+        dotnet-version: 9.0.x
 
     - name: Initialize CodeQL
-      uses: github/codeql-action/init@v3
+      uses: github/codeql-action/init@3599b3baa15b485a2e49ef411a7a4bb2452e7f93 # v3.30.5
       with:
         languages: ${{ matrix.language }}
         build-mode: autobuild
 
-    - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v3
+    - name: Perform CodeQL analysis
+      uses: github/codeql-action/analyze@3599b3baa15b485a2e49ef411a7a4bb2452e7f93 # v3.30.5
       with:
-        category: "/language:${{matrix.language}}"
+        category: /language:${{matrix.language}}

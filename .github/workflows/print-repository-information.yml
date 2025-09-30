@@ -4,26 +4,21 @@ on:
   workflow_dispatch:
     inputs:
       repository-information-type:
-        description: "Type of repository information to print: basic or extended"
+        description: Type of repository information to print - basic or extended
         required: true
         default: basic
         type: choice
-        options:
-          - basic
-          - extended
+        options: [ basic, extended ]
   push:
-    branches:
-      - master
+    branches: [ master ]
 
 permissions: read-all
 
 jobs:
-
     print-repository-information:
         runs-on: ubuntu-latest
         steps:
-
-            - name: Harden Runner
+            - name: Harden runner
               uses: step-security/harden-runner@f4a75cfd619ee5ce8d5b864b0d183aff3c69b55a # v2.13.1
               with:
                 egress-policy: audit
@@ -38,7 +33,7 @@ jobs:
               run: npm install @actions/github
 
             - name: Print repository information
-              uses: ./.github/workflows/actions/print-repository-information
+              uses: .github/workflows/actions/print-repository-information
               with:
                 repository-information-type: ${{ github.event.inputs.repository-information-type }}
 
