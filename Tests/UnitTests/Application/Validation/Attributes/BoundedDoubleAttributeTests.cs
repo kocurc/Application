@@ -1,5 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using Application.Validation.Attributes;
+﻿using Application.Validation.Attributes;
 
 namespace Tests.UnitTests.Application.Validation.Attributes
 {

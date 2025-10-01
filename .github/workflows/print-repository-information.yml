@@ -33,7 +33,7 @@ jobs:
               run: npm install @actions/github
 
             - name: Print repository information
-              uses: .github/workflows/actions/print-repository-information
+              uses: ./.github/workflows/actions/print-repository-information
               with:
                 repository-information-type: ${{ github.event.inputs.repository-information-type }}
 
