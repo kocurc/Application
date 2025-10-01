@@ -9,7 +9,7 @@ COPY ../../CleanArchitecture/Application/Application.csproj ../../Application/
 RUN dotnet restore
 
 COPY . ./
-COPY ../../CleanArchitecture ../../CleanArchitecture/
+COPY ../CleanArchitecture ../CleanArchitecture/
 RUN dotnet publish --configuration Release --output ./publish
 
 # RUNTIME STAGE, It creates new file system that weighs less than previous stage
