@@ -43,10 +43,10 @@ jobs:
         run: dotnet build --no-restore
 
       - name: Generate metadata
-        run: dotnet tool run docfx metadata ./documentation/docfx.json
+        run: dotnet tool run docfx metadata documentation/docfx.json
 
       - name: Build docfx
-        run: dotnet tool run docfx build ./documentation/docfx.json
+        run: dotnet tool run docfx build documentation/docfx.json
 
       - name: Build and deploy
         id: builddeploy

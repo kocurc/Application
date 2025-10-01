@@ -27,10 +27,10 @@ jobs:
               uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
 
             - name: Install actions core npm package
-              run: npm install @actions/core
+              run: npm install @actions/core@1.11.1
 
             - name: Install actions github npm package
-              run: npm install @actions/github
+              run: npm install @actions/github@6.0.1
 
             - name: Print repository information
               uses: ./.github/workflows/actions/print-repository-information
