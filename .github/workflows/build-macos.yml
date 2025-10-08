@@ -14,7 +14,7 @@ permissions: read-all
 jobs:
     build-application-macos:
       name: Build the appplication on MacOS
-      runs-on: [ self-hosted, macOS ]
+      runs-on: [ self-hosted, macos ]
 
       steps:
       - name: Harden runner
