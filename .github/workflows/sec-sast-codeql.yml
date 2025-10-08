@@ -5,7 +5,7 @@ on:
   push:
     branches: [ master ]
   schedule:
-    - cron: 0 1 * * 1 # Run it at 1:00 on Mondays
+    - cron: 0 1 * * 1 # At 01:00 on Monday
 
 permissions: read-all
 
