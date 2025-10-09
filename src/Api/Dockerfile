@@ -3,10 +3,10 @@ FROM mcr.microsoft.com/dotnet/sdk@sha256:eee11b0bf11715710bbe8339b9641f0ef8b5d8a
 
 WORKDIR /src
 
-COPY src/Api/Api.csproj /Api
-COPY src/CleanArchitecture/Domain/Domain.csproj CleanArchitecture/Domain
-COPY src/CleanArchitecture/Infrastructure/Infrastructure.csproj CleanArchitecture/Inftrastructure
-COPY src/CleanArchitecture/Application/Application.csproj CleanArchitecture/Application
+COPY src/Api/Api.csproj /Api/
+COPY src/CleanArchitecture/Domain/Domain.csproj CleanArchitecture/Domain/
+COPY src/CleanArchitecture/Infrastructure/Infrastructure.csproj CleanArchitecture/Inftrastructure/
+COPY src/CleanArchitecture/Application/Application.csproj CleanArchitecture/Application/
 
 # Download NuGet packages. It creates obj folder with project.assets.json with the list of downloaded dependencies
 RUN dotnet restore Api/Api.csproj
@@ -16,7 +16,7 @@ COPY src/CleanArchitecture/ CleanArchitecture/
 
 WORKDIR src/Api
 
-RUN dotnet publish --configuration Release --output /publish
+RUN dotnet publish --configuration Release --output /api/publish
 
 # RUNTIME STAGE, It creates new file system that weighs less than previous stage
 # https://mcr.microsoft.com/en-us/artifact/mar/dotnet/aspnet/tags 10.0
