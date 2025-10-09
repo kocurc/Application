@@ -19,17 +19,17 @@ jobs:
     steps:
 
       - name: Harden runner
-        uses: step-security/harden-runner@v2.13.1 # v2.13.1
+        uses: step-security/harden-runner@f4a75cfd619ee5ce8d5b864b0d183aff3c69b55a # v2.13.1
         with:
           egress-policy: audit
 
-      - uses: actions/checkout@v5.0.0 # v5.0.0
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
         with:
           submodules: true
           lfs: false
 
       - name: Setup .NET 9 SDK
-        uses: actions/setup-dotnet@v5.0.0 # v5.0.0
+        uses: actions/setup-dotnet@d4c94342e560b34958eacfc5d055d21461ed1c5d # v5.0.0
         with:
           dotnet-version: 9.0.x
 
@@ -50,7 +50,7 @@ jobs:
 
       - name: Build and deploy
         id: builddeploy
-        uses: azure/static-web-apps-deploy@v1 # v1s
+        uses: azure/static-web-apps-deploy@1a947af9992250f3bc2e68ad0754c0b0c11566c9 # v1s
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_PROUD_SMOKE_06DC54C03 }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}
