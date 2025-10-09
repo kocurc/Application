@@ -1,21 +1,31 @@
-FROM mcr.microsoft.com/dotnet/sdk@sha256:9b0a4330cb3dac23ebd6df76ab4211ec5903907ad2c1ccde16a010bf25f8dfde AS build
-WORKDIR /api
+# https://mcr.microsoft.com/en-us/artifact/mar/dotnet/sdk/tags 10.0
+FROM mcr.microsoft.com/dotnet/sdk@sha256:eee11b0bf11715710bbe8339b9641f0ef8b5d8a8e07f2d6ff3cd4361c1a4e5a7 AS build
 
-COPY Api.csproj ./
-COPY ../../CleanArchitecture/Domain/Domain.csproj ../../Domain/
-COPY ../../CleanArchitecture/Infrastructure/Infrastructure.csproj ../../Inftrastructure/
-COPY ../../CleanArchitecture/Application/Application.csproj ../../Application/
-# Download NuGet packages. It creates obj folder with project.assets.json with the list of downloaded depenedencies
-RUN dotnet restore
+WORKDIR /src
 
-COPY . ./
-COPY ../CleanArchitecture ../CleanArchitecture/
-RUN dotnet publish --configuration Release --output ./publish
+COPY src/Api/Api.csproj /Api
+COPY src/CleanArchitecture/Domain/Domain.csproj CleanArchitecture/Domain
+COPY src/CleanArchitecture/Infrastructure/Infrastructure.csproj CleanArchitecture/Inftrastructure
+COPY src/CleanArchitecture/Application/Application.csproj CleanArchitecture/Application
+
+# Download NuGet packages. It creates obj folder with project.assets.json with the list of downloaded dependencies
+RUN dotnet restore Api/Api.csproj
+
+COPY src/Api/ Api/
+COPY src/CleanArchitecture/ CleanArchitecture/
+
+WORKDIR src/Api
+
+RUN dotnet publish --configuration Release --output /publish
 
 # RUNTIME STAGE, It creates new file system that weighs less than previous stage
-FROM mcr.microsoft.com/dotnet/aspnet@sha256:c3aee4ea4f51369d1f906b4dbd19b0f74fd34399e5ef59f91b70fcd332f36566 AS final
-WORKDIR /api
+# https://mcr.microsoft.com/en-us/artifact/mar/dotnet/aspnet/tags 10.0
+FROM mcr.microsoft.com/dotnet/aspnet@sha256:d9a0d4006dbbc14d877b00c5e7113b432bac6bca6d12816a6e8fd999bac72797 AS final
 
-COPY --from=build /api/publish ./
+WORKDIR /
+
+COPY --from=build /publish ./
+
 EXPOSE 5000
+
 ENTRYPOINT [ "dotnet", "Api.dll" ]
