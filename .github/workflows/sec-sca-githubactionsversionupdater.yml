@@ -1,13 +1,13 @@
 name: GitHub Actions Version Updater
 
-permissions: read-all
-
 on:
   workflow_dispatch:
   push:
     branches: [ master ]
   schedule:
     - cron:  0 0 * * 0 # At 00:00 on Sunday
+
+permissions: read-all
 
 jobs:
   build:
@@ -17,7 +17,9 @@ jobs:
       - name: Ensure workflow secret is configured
         run: |
           if [ -z "${{ secrets.WORKFLOW_SECRET }}" ]; then
-            echo "::error::The WORKFLOW_SECRET secret is not configured."
+            echo "::error::The WORKFLOW_SECRET secret is not configured in the repository's secrets."
+            echo "::error::The WORKFLOW_SECRET secret should be a copy of a PAT token."
+            
             exit 1
           fi
 
