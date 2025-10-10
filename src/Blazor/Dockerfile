@@ -8,6 +8,8 @@ COPY src/Blazor/Blazor.csproj Blazor/
 # Download NuGet packages. It creates obj folder with project.assets.json with the list of downloaded dependencies
 RUN dotnet restore Blazor/Blazor.csproj
 
+COPY Directory.Build.props ./
+COPY Directory.Build.targets ./
 COPY src/Blazor/ Blazor/
 
 WORKDIR /src/Blazor
