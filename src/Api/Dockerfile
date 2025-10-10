@@ -17,7 +17,7 @@ RUN dotnet restore Api/Api.csproj
 COPY src/Api/ Api/
 COPY src/CleanArchitecture/ CleanArchitecture/
 
-WORKDIR src/Api
+WORKDIR /src/Api
 
 RUN dotnet publish --configuration Release --output /publish
 
