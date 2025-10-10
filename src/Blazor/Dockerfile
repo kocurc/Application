@@ -1,5 +1,5 @@
-# https://mcr.microsoft.com/en-us/artifact/mar/dotnet/sdk/tags 10.0
-FROM mcr.microsoft.com/dotnet/sdk@sha256:eee11b0bf11715710bbe8339b9641f0ef8b5d8a8e07f2d6ff3cd4361c1a4e5a7 AS build
+# https://mcr.microsoft.com/en-us/artifact/mar/dotnet/sdk/tag/9.0
+FROM mcr.microsoft.com/dotnet/sdk@sha256:123b43e4d9775451d8ed63af324a42132707b4edb14770bcdf5c85cf55bc45f1 AS build
 
 WORKDIR /src
 

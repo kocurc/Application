@@ -1,5 +1,5 @@
-# https://mcr.microsoft.com/en-us/artifact/mar/dotnet/sdk/tags 10.0
-FROM mcr.microsoft.com/dotnet/sdk@sha256:eee11b0bf11715710bbe8339b9641f0ef8b5d8a8e07f2d6ff3cd4361c1a4e5a7 AS build
+# https://mcr.microsoft.com/en-us/artifact/mar/dotnet/sdk/tag/9.0
+FROM mcr.microsoft.com/dotnet/sdk@sha256:123b43e4d9775451d8ed63af324a42132707b4edb14770bcdf5c85cf55bc45f1 AS build
 
 WORKDIR /src
 
@@ -19,8 +19,8 @@ WORKDIR src/Api
 RUN dotnet publish --configuration Release --output /api/publish
 
 # RUNTIME STAGE, It creates new file system that weighs less than previous stage
-# https://mcr.microsoft.com/en-us/artifact/mar/dotnet/aspnet/tags 10.0
-FROM mcr.microsoft.com/dotnet/aspnet@sha256:d9a0d4006dbbc14d877b00c5e7113b432bac6bca6d12816a6e8fd999bac72797 AS final
+# https://mcr.microsoft.com/en-us/artifact/mar/dotnet/aspnet/tag/9.0
+FROM mcr.microsoft.com/dotnet/aspnet@sha256:366204b1d249aa2615f4942c8549677a1f3e6231829f274aa8829fc048f38d8c AS final
 
 WORKDIR /
 
