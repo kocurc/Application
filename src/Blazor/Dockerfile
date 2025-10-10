@@ -20,6 +20,6 @@ RUN dotnet publish --configuration Release --output /publish
 # https://hub.docker.com/_/nginx stable-alpine
 FROM nginx:alpine@sha256:91786fc3554a00f445f9639d4f21a8564b6fd4f1ad39d17ed32f00faae24bc7c AS final
 
-COPY --from=build /src/Blazor/publish/wwwroot /usr/share/nginx/html
+COPY --from=build /publish/wwwroot /usr/share/nginx/html
 
 EXPOSE 80
