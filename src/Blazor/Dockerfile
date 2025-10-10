@@ -5,6 +5,7 @@ WORKDIR /src
 
 COPY Directory.Build.props ./
 COPY Directory.Build.targets ./
+COPY global.json ./
 COPY src/Blazor/Blazor.csproj Blazor/
 
 # Download NuGet packages. It creates obj folder with project.assets.json with the list of downloaded dependencies

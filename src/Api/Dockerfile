@@ -3,6 +3,9 @@ FROM mcr.microsoft.com/dotnet/sdk@sha256:123b43e4d9775451d8ed63af324a42132707b4e
 
 WORKDIR /src
 
+COPY Directory.Build.props ./
+COPY Directory.Build.targets ./
+COPY global.json ./
 COPY src/Api/Api.csproj Api/
 COPY src/CleanArchitecture/Domain/Domain.csproj CleanArchitecture/Domain/
 COPY src/CleanArchitecture/Infrastructure/Infrastructure.csproj CleanArchitecture/Infrastructure/
