@@ -41,7 +41,7 @@
 			populationRecord.UpdatePopulation(newPopulationValue);
 
 			// Assert
-			populationRecord.Population.Should().Be(newPopulationValue);
+			populationRecord.PopulationSize.Should().Be(newPopulationValue);
 		}
 	}
 }

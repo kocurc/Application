@@ -28,4 +28,4 @@ documentation/_site
 documentation/api
 
 # Entity Framework
-**/Database/Population.db
+**/Database/Population.db*

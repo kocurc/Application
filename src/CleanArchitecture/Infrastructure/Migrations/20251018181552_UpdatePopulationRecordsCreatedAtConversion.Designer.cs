@@ -11,23 +11,24 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ApplicationApi.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250704221058_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20251018181552_UpdatePopulationRecordsCreatedAtConversion")]
+    partial class UpdatePopulationRecordsCreatedAtConversion
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "9.0.6");
+            modelBuilder.HasAnnotation("ProductVersion", "9.0.9");
 
-            modelBuilder.Entity("ApplicationApi.Domain.Entities.PopulationRecord", b =>
+            modelBuilder.Entity("Domain.Entities.PopulationRecord", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("TEXT");
+                    b.Property<long?>("CreatedAt")
+                        .HasColumnType("INTEGER")
+                        .HasColumnName("Created at");
 
                     b.Property<int>("Population")
                         .HasColumnType("INTEGER");

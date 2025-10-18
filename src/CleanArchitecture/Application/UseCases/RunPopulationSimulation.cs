@@ -46,7 +46,7 @@ namespace Application.UseCases
 					disasterMaxLoss: simulationRequest.DisasterMaxLoss
 				);
 
-				currentPopulation = populationRecord.Population;
+				currentPopulation = populationRecord.PopulationSize;
 
 				await populationRecordRepository.AddPopulationAsync(populationRecord, cancellationToken);
 				results.Add(populationRecord);

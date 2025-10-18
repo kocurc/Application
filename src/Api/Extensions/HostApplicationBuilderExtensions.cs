@@ -1,4 +1,4 @@
-﻿using Infrastructure.Infrastructure.Database;
+﻿using Infrastructure.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 
 namespace Api.Extensions
@@ -10,7 +10,9 @@ namespace Api.Extensions
 			var connectionString = hostApplicationBuilder.Configuration.GetConnectionString("DefaultConnection");
 
 			_ = hostApplicationBuilder.Services.AddDbContext<AppDbContext>(dbContextOptionsBuilder =>
-				dbContextOptionsBuilder.UseSqlite(connectionString));
+				dbContextOptionsBuilder.UseSqlite(connectionString,
+					sqliteDbContextOptionsBuilder =>
+						sqliteDbContextOptionsBuilder.MigrationsAssembly("Infrastructure")));
 		}
 	}
 }

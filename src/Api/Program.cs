@@ -1,4 +1,6 @@
 using Api.Extensions;
+using Infrastructure.Infrastructure.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace Api
 {
@@ -16,6 +18,8 @@ namespace Api
 
             var app = builder.Build();
 
+            app.ConfigureHttpRequestPipeline();
+            app.SeedDatabase();
             app.Run();
         }
     }
